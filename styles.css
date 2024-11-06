@@ -1,0 +1,554 @@
+/* Reset default margins and paddings */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global style */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f8ff;
+    color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+/* Research container style */
+.research-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjusts the spacing between items */
+}
+
+.research-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: calc(100% - 20px); /* Adjust the width as needed */
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+/* Item de recherche secondaire */
+.research-item2.secondary {
+    display: flex;
+    flex-direction: column; /* Organise les éléments verticalement */
+    gap: 10px; /* Espacement entre les éléments */
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: calc(100% - 20px); /* Prenez toute la largeur disponible */
+    box-sizing: border-box;
+    text-align: left
+}
+
+/* Style pour le titre du papier */
+.research-item2 h3 {
+    font-size: 1em; /* Taille du titre */
+    margin: 0; /* Enlever les marges par défaut */
+}
+
+.research-item:hover {
+    transform: scale(1.05);
+}
+
+/* Carousel container */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    overflow: hidden;
+}
+
+/* Carousel images container */
+.carousel-images {
+    display: flex;
+    width: 300%; /* 100% per image */
+    height: 100%;
+    animation: scroll 15s linear infinite;
+}
+
+/* Carousel images */
+.carousel-images img {
+    width: 33.33%; /* Show one image at a time */
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Animation for scrolling */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-66.66%); /* Move past two images */
+    }
+}
+
+/* Research item title style */
+.research-item h3 {
+    font-size: 1em; /* Smaller title size */
+    margin-bottom: 10px;
+}
+
+/* Research item text style */
+.research-item p {
+    margin: 5px 0;
+}
+
+.research-item .authors {
+    font-size: 1em;
+    color: #555;
+}
+
+.research-item .publication {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.research-item2 .authors {
+    font-size: 1em;
+    color: #555;
+}
+
+.research-item2 .publication {
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Style pour l'élément principal centré */
+.research-item.main {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: 100%; /* Largeur adaptable */
+    max-width: 800px; /* Limite la largeur de l'élément */
+    box-sizing: border-box;
+    text-align: center;
+
+    /* Marges automatiques pour centrer */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Header style */
+header {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* Name style */
+header .name {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Arrow Container */
+.arrow-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Arrow Style */
+.arrow {
+    display: inline-block;
+    position: relative;
+    margin-top: 20px;
+}
+
+/* Arrow Animation */
+.arrow span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid #333;
+    border-right: 2px solid #333;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
+}
+
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-10px, -10px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+}
+
+/* Navigation menu style */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 5px 10px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background-color: grey;
+    transition: left 0.3s ease;
+}
+
+nav ul li a:hover::before {
+    left: 0;
+}
+
+nav ul li a:hover {
+    color: #333;
+}
+
+/* Section style */
+section {
+    background-color: transparent;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 1200px;
+}
+
+/* About section style */
+.about-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 20px auto;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #333;
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+}
+
+/* Research item style */
+.research-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.research-item:hover {
+    transform: scale(1.05);
+}
+
+.research-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.research-img:hover {
+    transform: scale(1.1);
+}
+
+/* Footer style */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #fff;
+}
+
+/* Teaching Section Style */
+#Teaching {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 1200px;
+}
+
+#Teaching h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#Teaching .assistant-info {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+#Teaching .ens-info {
+    font-size: 0.7em;
+    font-style: italic;
+    font-weight: normal;
+}
+
+#Teaching p {
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+#Teaching p strong {
+    font-size: 1.1em;
+    font-weight: normal;
+}
+
+#Teaching p em {
+    font-style: italic;
+}
+
+#Teaching ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 10px 0;
+}
+
+#Teaching ul li {
+    font-size: 1em;
+    margin-left: 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+#Teaching ul li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+}
+
+/* Name and Tree Container */
+.name-tree-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tree {
+    width: 40px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+/* Tree structure */
+.leaves,
+.wood {
+    height: 50%;
+}
+
+.leaves {
+    width: 100%;
+    position: relative;
+    transform: translateY(10px);
+    z-index: 1;
+}
+
+.wood {
+    width: 8px;
+    background-color: #e58749;
+    position: relative;
+}
+
+.wood::before,
+.wood::after {
+    position: absolute;
+    content: "";
+    background-color: #e58749;
+    width: 8px;
+    height: 12px;
+}
+
+.wood::before {
+    top: -12px;
+    left: -1px;
+    transform-origin: right bottom;
+    transform: rotateZ(-30deg);
+}
+
+.wood::after {
+    top: -15px;
+    left: -1px;
+    transform-origin: left bottom;
+    transform: rotateZ(30deg);
+}
+
+.leaf {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    transform: scale(0);
+    transition: transform 0.5s;
+}
+
+#one {
+    background-color: #27b229;
+    top: -3px;
+    left: 25%;
+}
+
+#two {
+    background-color: #0ea511;
+    bottom: 0;
+    left: 5%;
+}
+
+#three {
+    background-color: #2d9b2e;
+    bottom: 0;
+    right: 5%;
+}
+
+.leaf::before {
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    content: "";
+    background-color: #e2062c;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 30%) scale(0);
+    transition: transform 0.3s;
+}
+
+/* Hover Effects */
+.name-tree-container:hover .tree {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.name-tree-container:hover .leaf {
+    transform: scale(1);
+}
+
+.name-tree-container:hover #one {
+    transition-delay: 0.4s;
+}
+
+.name-tree-container:hover #two {
+    transition-delay: 0.2s;
+}
+
+.name-tree-container:hover #three {
+    transition-delay: 0s;
+}
+
+.name-tree-container:hover .leaf::before {
+    transform: translate(-50%, 30%) scale(1);
+    transition-delay: 0.6s;
+}
+
+
+/* Ajuster la taille des images dans le slideshow */
+.slide-image {
+    width: calc(50% - 20px);
+    height: auto; /* Garder l'aspect ratio de l'image */
+    object-fit: contain; /* Permet à l'image de s'adapter sans être coupée */
+}
+
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    overflow: hidden;
+}
+
+
+/* Slideshow */
+.slideshow {
+    display: flex;
+    width: 200%; /* Adjust according to number of slides */
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Slide */
+.slide {
+    width: 100%;
+    height: 100%;
+    flex: 1 0 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+}
+
+/* Ensure images fill the slide container */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Keyframes for fading in and out */
+@keyframes fade {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Apply the animation to the slides */
+.slide:nth-child(1) {
+    animation: fade 15s infinite;
+}
+
+.slide:nth-child(2) {
+    animation: fade 15s infinite 5s;
+}
+
+.slide:nth-child(3) {
+    animation: fade 15s infinite 10s;
+}
+
+.twitter-link {
+    text-decoration: none; /* Removes underline from entire link */
+}
+
+.twitter-link span {
+    text-decoration: none; /* Ensures the @MathildeDegois stays without underline */
+    color: inherit; /* Keeps the text color consistent */
+}
