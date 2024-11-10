@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathilde Degois - PhD</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
         /* Set background color to white */
         body {
@@ -95,7 +96,6 @@
         </div>
     </div>
 
-    <!-- Research section -->
     <section id="research">
         <h2>Research</h2>
         <div class="research-container">
@@ -104,7 +104,17 @@
                 <h3><em>Beyond Borders: Deforestation, Rainfall Disruptions and Economic Loss in West Africa</em></h3>
                 <p class="authors">with T. Vendryes and J. Wolfersberger</p>
                 <p class="publication">Working Paper</p>
-
+    
+                <!-- Arrow button to toggle abstract visibility -->
+                <button class="dropdown-toggle">
+                    <span class="arrow2"></span>
+                </button>
+                
+                <!-- Le résumé (abstract) caché par défaut -->
+                <div class="abstract">
+                    <p>This paper investigates the long-distance externalities of deforestation on economic development in West Africa through the rainfall mechanism. Clouds passing over newly cleared areas accumulate less water, negatively affecting rainfed agriculture along the wind corridor. Using satellite data, we exploit wind patterns' exogeneity, conducting our analysis at the cell level over 21 years of data (2001-2022). Our findings reveal significant negative effects on agricultural productivity and GDP in areas up to 200 km from deforested regions. In particular, deforestation in Ivory Coast since the 2000s has reduced GDP growth by 1.8% compared to the regional average. These results underscore the need for cross-border governance and integrated policy, not only for environmental sustainability but also to mitigate broader economic repercussions.</p>
+                </div>
+    
                 <!-- Slideshow for main paper -->
                 <div class="slideshow-container">
                     <div class="slideshow">
@@ -117,21 +127,25 @@
                     </div>
                 </div>
             </div>
+    
+            <!-- Secondary Paper 1 (Agricultural Productivity) -->
+            <div class="research-item2 secondary">
+                <h3><em>Does Agricultural Productivity Lead to Capital Accumulation or Re-Location? Evidence from Long-Term Irrigation in India</em></h3>
+                <p class="authors">with D. Blakeslee and R. Fishman</p>
+                <p class="publication">Working Paper</p>
 
-        <!-- Secondary Paper 1 (Agricultural Productivity) -->
-        <div class="research-item2 secondary">
-            <h3><em>Does Agricultural Productivity Lead to Capital Accumulation or Re-Location? Evidence from Long-Term Irrigation in India</em></h3>
-            <p class="authors">with D. Blakeslee and R. Fishman</p>
-            <p class="publication">Working Paper</p>
+                
+            </div>
+    
+            <!-- Secondary Paper 2 (Groundwater Use) -->
+            <div class="research-item2 secondary">
+                <h3><em>Could India’s Groundwater Use be Weakly Sustainable?</em></h3>
+                <p class="authors">with D. Blakeslee, R. Fishman, and E. Zaveri</p>
+                <p class="publication">Journal of Environmental Economics and Management, R&R </p>
+    
+                
+            </div>
         </div>
-
-        <!-- Secondary Paper 2 (Groundwater Use) -->
-        <div class="research-item2 secondary">
-            <h3><em>Could India’s Groundwater Use be Weakly Sustainable?</em></h3>
-            <p class="authors">with D. Blakeslee, R. Fishman, and E. Zaveri</p>
-            <p class="publication">Journal of Environmental Economics and Management, R&R </p>
-        </div>
-    </div>
     </section>
 
     <section id="Teaching">
@@ -160,16 +174,33 @@
     </footer>
 
     <script>
-        // JavaScript to handle image slideshow functionality
-        function changeSlide(slideIndex) {
-            let slides = document.querySelectorAll('.slide');
-            slides.forEach((slide, index) => {
-                slide.classList.remove('active');
-                if (index === slideIndex) {
-                    slide.classList.add('active');
-                }
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Image slideshow functionality
+            function changeSlide(slideIndex) {
+                const slides = document.querySelectorAll('.slide');
+                slides.forEach((slide, index) => {
+                    slide.classList.remove('active');
+                    if (index === slideIndex) {
+                        slide.classList.add('active');
+                    }
+                });
+            }
+    
+            // Handle dropdown toggle and arrow rotation
+            document.querySelectorAll('.dropdown-toggle').forEach(button => {
+                button.addEventListener('click', function() {
+                    const researchItem = button.closest('.research-item, .research-item2');
+                    
+                    // Toggle the open class
+                    researchItem.classList.toggle('open');
+                    
+                    // Rotate arrow
+                    const arrow = button.querySelector('.arrow2, .unique-arrow2');
+                    arrow.classList.toggle('toggle-active');
+                });
             });
-        }
+        });
     </script>
 
 </body>

@@ -2,12 +2,14 @@
 body, h1, h2, p, ul {
     margin: 0;
     padding: 0;
+    font-size: 1rem;
 }
 
 /* Global style */
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
+    font-size: 1rem;
     background-color: #f0f8ff;
     color: #333;
     padding: 0;
@@ -40,7 +42,20 @@ body {
     padding: 20px;
     width: calc(100% - 20px); /* Prenez toute la largeur disponible */
     box-sizing: border-box;
-    text-align: left
+    text-align: left;
+}
+
+/* Style for secondary research items (arrows on the left) */
+.research-item2.secondary .dropdown-toggle {
+    text-align: left; /* Align text to the left inside the button */
+    padding-left: 0; /* Remove any padding to ensure it’s left-aligned */
+}
+
+/* Adjust the arrow position to the left */
+.research-item2.secondary .arrow2 {
+    margin-left: 0; /* Make sure there's no extra margin pushing the arrow to the right */
+    margin-right: 10px; /* Optional: space between the arrow and text */
+    display: inline-block;
 }
 
 /* Style pour le titre du papier */
@@ -152,14 +167,12 @@ header .name {
 /* Arrow Container */
 .arrow-container {
     text-align: center;
-    margin: 20px 0;
 }
 
 /* Arrow Style */
 .arrow {
     display: inline-block;
     position: relative;
-    margin-top: 20px;
 }
 
 /* Arrow Animation */
@@ -171,7 +184,7 @@ header .name {
     border-right: 2px solid #333;
     transform: rotate(45deg);
     margin: -10px;
-    animation: animate 2s infinite;
+    animation: animate 1.5s infinite;
 }
 
 @keyframes animate {
@@ -187,6 +200,143 @@ header .name {
         transform: rotate(45deg) translate(10px, 10px);
     }
 }
+
+/* abstract */
+/* Arrow Container */
+.dropdown-toggle {
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+.research-item .abstract {
+    display: none;  /* Résumé caché par défaut */
+}
+
+.research-item.open .abstract {
+    display: block;  /* Affiche l'abstract quand .research-item a la classe 'open' */
+}
+
+.research-item2 .abstract {
+    display: none;  /* Résumé caché par défaut */
+}
+
+.research-item2.open .abstract {
+    display: block;  /* Affiche l'abstract quand .research-item a la classe 'open' */
+}
+
+/* Main arrow style */
+.arrow2 {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #333;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+/* Unique arrow style */
+.unique-arrow2 {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #616060;
+    transition: transform 0.3s ease;
+    animation: bounce-unique 1s infinite;
+    position: relative;
+}
+
+/* Unique bouncing animation for the arrow */
+@keyframes bounce-unique {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Rotate the unique arrow when active */
+.toggle-active {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.toggle-button {
+    transition: transform 0.3s ease;
+}
+
+/* Cacher le bouton, mais laisser la flèche cliquable */
+button.dropdown-toggle {
+    background: transparent; /* Pas de fond */
+    border: none; /* Pas de bordure */
+    padding: 10px 20px; /* Pas de padding */
+    cursor: pointer;  /* Assurer que l'élément peut être cliqué */
+    display: inline-block; /* Ne prend que la taille de la flèche */
+}
+
+/* When the abstract is opened, the arrow rotates */
+.research-item.open .arrow2 {
+    transform: rotate(180deg); /* Rotate arrow to point upwards */
+}
+
+
+/* Bouncing animation for the arrow to grab attention */
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Apply the bounce animation on hover */
+.arrow2:hover {
+    animation: bounce 1s infinite;
+}
+
+button.dropdown-toggle:hover {
+    animation: bounce 1s infinite;
+}
+
+/* Abstract Style */
+.abstract {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+    opacity: 0;  /* Initially invisible */
+    height: 0;  /* No height when hidden */
+    visibility: hidden; /* Hide the abstract */
+    overflow: hidden; /* Hide anything overflowing */
+    transition: opacity 0.3s ease, visibility 0s 0.3s, height 0.3s ease;
+}
+
+/* When dropdown is active, show the abstract */
+.research-item.open .abstract {
+    opacity: 1; /* Make the abstract visible */
+    visibility: visible;  /* Ensure it's not hidden */
+    height: auto;  /* Restore the height */
+    transition: opacity 0.3s ease, visibility 0s 0s, height 0.3s ease;
+}
+
+.research-item2.open .abstract {
+    opacity: 1; /* Make the abstract visible */
+    visibility: visible;  /* Ensure it's not hidden */
+    height: auto;  /* Restore the height */
+    transition: opacity 0.3s ease, visibility 0s 0s, height 0.3s ease;
+}
+
 
 /* Navigation menu style */
 nav ul {
@@ -209,6 +359,13 @@ nav ul li a {
     overflow: hidden;
     display: inline-block;
 }
+button, .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 nav ul li a::before {
     content: '';
@@ -274,6 +431,18 @@ section {
 }
 
 .research-item:hover {
+    transform: scale(1.05);
+}
+
+.research-item2 {
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.research-item2:hover {
     transform: scale(1.05);
 }
 
@@ -551,4 +720,36 @@ footer {
 .twitter-link span {
     text-decoration: none; /* Ensures the @MathildeDegois stays without underline */
     color: inherit; /* Keeps the text color consistent */
+}
+
+
+
+
+
+/* Smartphone design */
+/* This ensures the site adapts to smaller screen sizes like smartphones */
+@media only screen and (max-width: 600px) {
+    /* Adjustments for smartphones */
+    body {
+        font-size: 16px;  /* Adjust font size for readability */
+    }
+
+    .container {
+        padding: 10px;  /* Add padding for smaller screens */
+    }
+
+    .navbar {
+        font-size: 14px;  /* Reduce the font size of navigation */
+    }
+
+    /* Stack elements vertically on smaller screens */
+    .dropdown {
+        width: 100%;  /* Ensure dropdowns use full width */
+    }
+
+    /* Hide large images or adjust sizes */
+    .hero-image {
+        width: 100%;  /* Make images responsive */
+        height: auto;
+    }
 }
