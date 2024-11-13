@@ -190,6 +190,7 @@
     <script>
         // Wait for the DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
+            
             // Image slideshow functionality
             function changeSlide(slideIndex) {
                 const slides = document.querySelectorAll('.slide');
@@ -212,6 +213,25 @@
                     // Rotate arrow
                     const arrow = button.querySelector('.arrow2, .unique-arrow2');
                     arrow.classList.toggle('toggle-active');
+                });
+            });
+    
+            // Add hover effect to animate the arrow when the mouse enters the research-item main
+            document.querySelectorAll('.research-item.main').forEach(item => {
+                const arrow = item.querySelector('.arrow2, .unique-arrow2');
+    
+                // Mouse enters the research-item.main
+                item.addEventListener('mouseenter', () => {
+                    if (arrow) {
+                        arrow.classList.add('bouncing'); // Adding a class to trigger the bounce animation
+                    }
+                });
+    
+                // Mouse leaves the research-item.main
+                item.addEventListener('mouseleave', () => {
+                    if (arrow) {
+                        arrow.classList.remove('bouncing'); // Removing the class to stop the bounce animation
+                    }
                 });
             });
         });

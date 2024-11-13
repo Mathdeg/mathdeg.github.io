@@ -230,9 +230,9 @@ header .name {
     display: inline-block;
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #333;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #333;
     transition: transform 0.3s ease;
     position: relative;
 }
@@ -277,9 +277,9 @@ header .name {
 button.dropdown-toggle {
     background: transparent; /* Pas de fond */
     border: none; /* Pas de bordure */
-    padding: 10px 20px; /* Pas de padding */
+    padding: 20px 25px; /* Pas de padding */
     cursor: pointer;  /* Assurer que l'élément peut être cliqué */
-    display: inline-block; /* Ne prend que la taille de la flèche */
+    display: block; /* Ne prend que la taille de la flèche */
 }
 
 /* When the abstract is opened, the arrow rotates */
@@ -303,6 +303,11 @@ button.dropdown-toggle {
 
 /* Apply the bounce animation on hover */
 .arrow2:hover {
+    animation: bounce 1s infinite;
+}
+
+/* Apply the bounce animation when hovering over the entire research item */
+.research-item.main:hover .arrow2 {
     animation: bounce 1s infinite;
 }
 
