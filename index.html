@@ -30,6 +30,7 @@
             width: 20px;
             height: 20px;
             vertical-align: middle;
+            margin: 0 5px; /* Optional spacing between icons */
         }
 
         /* Center the X logo below the profile image */
@@ -98,9 +99,14 @@
             <div class="profile-container">
                 <img src="profile.jpg" alt="Portrait of Mathilde Degois" class="profile-img">
                 <!-- Centered X logo link below the profile photo -->
-                <p><a href="https://x.com/MathildeDegois" target="_blank">
-                    <img src="logo-black.png" alt="X logo" class="social-icon">
-                </a></p>
+                <div class="social-icons">
+                    <a href="https://x.com/MathildeDegois" target="_blank">
+                        <img src="logo-black.png" alt="X logo" class="social-icon">
+                    </a>
+                    <a href="https://bsky.app/profile/mathildegois.bsky.social" target="_blank">
+                        <img src="bluesky.png" alt="Bluesky logo" class="social-icon">
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -163,6 +169,31 @@
         </div>
     </section>
 
+    <div style="text-align: center; margin-top: 30px;">
+        <button id="show-sleepy" class="btn">Show Sleepy Research 💤</button>
+    </div>
+
+    <section id="sleepy-research" style="display: none;">
+        <h2 style="font-size: 1.2em; margin-bottom: 0.3em;">Previous Research</h2>
+        <div class="previous-research">
+            <h3 style="margin-bottom: 0.2em; font-size: 1em;">
+                <span style="font-style: normal;">Master 2 Thesis:</span>
+                <span style="font-style: italic; margin-left: 5px;">Electricity Access and agricultural productivity in Madagascar</span>
+                <span class="supervision-note">under the supervision of Mathilde Maurel</span>
+              </h3>
+            <p style="margin-top: 0;">This paper estimates the heterogeneous and dynamic effects of first-time electricity access on cropland productivity in Madagascar using satellite data in a staggered difference-in-differences setup, showing that while initial impacts may be negative, long-term benefits arise—particularly in villages located above productive aquifers.</p>
+        </div>
+
+        <div class="previous-research">
+            <h3 style="margin-bottom: 0.2em; font-size: 1em;">
+                <span style="font-style: normal;">Master 1 Thesis:</span>
+                <span style="font-style: italic; margin-left: 5px;">Water Pollution and Infant Health in India</span>
+                <span class="supervision-note">under the supervision of Thomas Vendryes</span>
+              </h3>
+            <p style="margin-top: 0;">This paper examines how water pollution affects child health in India, showing that higher levels of specific pollutants are associated with lower birth weight and poorer growth outcomes, based on a newly constructed water pollution level dataset matched with DHS data.</p>
+        </div>
+    </section>
+
     <section id="Teaching">
         <h2>Teaching <span class="assistant-info">Assistant</span> <em class="ens-info">at École Normale Supérieure Paris-Saclay (64h)</em></h2>
         <ul>
@@ -182,19 +213,51 @@
                 <span>@MathildeDegois</span>
             </a>
         </p>
+        <p>
+            <a href="https://bsky.app/profile/mathildegois.bsky.social" target="_blank" class="bluesky-link">
+                <img src="bluesky.png" alt="Bluesky logo" class="social-icon">
+                <span>@mathildedegois.bsky.social</span>
+            </a>
+        </p>
     </section>
 
     <footer>
         <p>&copy; 2024 Mathilde Degois. All rights reserved.</p>
     </footer>
-
+    
     <script>
-        // Wait for the DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener("DOMContentLoaded", function () {
+            // 🌱 Animate tree growth on page load
+            const tree = document.querySelector('.tree');
+            const leaves = document.querySelectorAll('.leaf');
+    
+            if (tree) {
+                tree.classList.add('animate-on-load');
             
-            // Image slideshow functionality
+                setTimeout(() => {
+                    leaves.forEach((leaf, i) => {
+                        setTimeout(() => {
+                            leaf.style.transform = 'scale(1)';
+                        }, i * 200);
+                    });
+            
+                    // Après la dernière feuille, on déclenche les baies
+                    const totalDuration = leaves.length * 200 + 500;
+                    setTimeout(() => {
+                        tree.classList.add('berries-visible');
+                    }, totalDuration);
+                }, 1000); // delay after trunk animation
+            }
+
+            tree.addEventListener('mouseenter', () => {
+                tree.classList.remove('grow-on-hover');
+                void tree.offsetWidth; // 💡 Forcer un reflow pour redémarrer l'animation
+                tree.classList.add('grow-on-hover');
+            });
+    
+            // 🖼 Slideshow logic
             function changeSlide(slideIndex) {
-                const slides = document.querySelectorAll('.slide');
+                let slides = document.querySelectorAll('.slide');
                 slides.forEach((slide, index) => {
                     slide.classList.remove('active');
                     if (index === slideIndex) {
@@ -203,40 +266,45 @@
                 });
             }
     
-            // Handle dropdown toggle and arrow rotation
-            document.querySelectorAll('.dropdown-toggle').forEach(button => {
-                button.addEventListener('click', function() {
-                    const researchItem = button.closest('.research-item, .research-item2');
-                    
-                    // Toggle the open class
-                    researchItem.classList.toggle('open');
-                    
-                    // Rotate arrow
-                    const arrow = button.querySelector('.arrow2, .unique-arrow2');
-                    arrow.classList.toggle('toggle-active');
-                });
-            });
+            // 🔽 Abstract toggle logic
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
     
-            // Add hover effect to animate the arrow when the mouse enters the research-item main
-            document.querySelectorAll('.research-item.main').forEach(item => {
-                const arrow = item.querySelector('.arrow2, .unique-arrow2');
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function () {
+                    const parentItem = toggle.closest('.research-item, .research-item2');
+                    const abstract = parentItem.querySelector('.abstract');
+                    const arrow = parentItem.querySelector('.arrow2');
     
-                // Mouse enters the research-item.main
-                item.addEventListener('mouseenter', () => {
-                    if (arrow) {
-                        arrow.classList.add('bouncing'); // Adding a class to trigger the bounce animation
-                    }
-                });
-    
-                // Mouse leaves the research-item.main
-                item.addEventListener('mouseleave', () => {
-                    if (arrow) {
-                        arrow.classList.remove('bouncing'); // Removing the class to stop the bounce animation
+                    if (parentItem.classList.contains('open')) {
+                        parentItem.classList.remove('open');
+                        abstract.style.visibility = 'hidden';
+                        abstract.style.opacity = '0';
+                        arrow.classList.remove('open');
+                    } else {
+                        parentItem.classList.add('open');
+                        abstract.style.visibility = 'visible';
+                        abstract.style.opacity = '1';
+                        arrow.classList.add('open');
                     }
                 });
             });
+    
+            // 💤 Toggle sleepy research
+            const btn = document.getElementById('show-sleepy');
+            const sleepySection = document.getElementById('sleepy-research');
+    
+            if (btn && sleepySection) {
+                btn.addEventListener('click', () => {
+                    if (sleepySection.style.display === 'none') {
+                        sleepySection.style.display = 'block';
+                        btn.textContent = 'Hide Sleepy Research 🐑';
+                    } else {
+                        sleepySection.style.display = 'none';
+                        btn.textContent = 'Show Sleepy Research 💤';
+                    }
+                });
+            }
         });
     </script>
-
-</body>
-</html>
+    </body>
+    </html>

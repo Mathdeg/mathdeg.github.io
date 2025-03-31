@@ -727,9 +727,51 @@ footer {
     color: inherit; /* Keeps the text color consistent */
 }
 
+.bluesky-link {
+    text-decoration: none;
+}
 
+.bluesky-link span {
+    text-decoration: none;
+    color: inherit;
+}
 
+#research h2 {
+    font-size: 1.5em; /* Try 2.5em or 3em if you want it larger */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
+#sleepy-research {
+    transition: all 0.5s ease;
+}
+
+#show-sleepy {
+    background: linear-gradient(135deg, #dfefff, #f7faff);
+    border: none;
+    border-radius: 50px;
+    padding: 14px 28px;
+    font-size: 1rem;
+    color: #2a2a2a;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    font-family: 'Arial', sans-serif;
+}
+
+#show-sleepy:hover {
+    background: linear-gradient(135deg, #cde7ff, #f0f8ff);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.supervision-note {
+    font-style: normal;
+    font-size: 0.85em;
+    margin-left: 10px;
+    color: #555;
+}
 
 /* Smartphone design */
 /* This ensures the site adapts to smaller screen sizes like smartphones */
@@ -756,5 +798,53 @@ footer {
     .hero-image {
         width: 100%;  /* Make images responsive */
         height: auto;
+    }
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center; /* or flex-start if preferred */
+    align-items: center;
+    gap: 10px; /* controls spacing between logos */
+}
+
+@keyframes growTreeOnLoad {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.tree.animate-on-load {
+    animation: growTreeOnLoad 1.2s ease-out forwards;
+}
+
+/* Ensure leaves are initially hidden (override hover behavior) */
+.tree .leaf {
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+/* Baies rouges dans les feuilles */
+.tree.berries-visible .leaf::before {
+    transform: translate(-50%, 30%) scale(1);
+    transition: transform 0.4s ease;
+    transition-delay: 0.2s; /* Décalage après apparition de la feuille */
+}
+
+.tree.grow-on-hover {
+    animation: growTreeHover 0.8s ease-out forwards;
+}
+
+@keyframes growTreeHover {
+    0% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
     }
 }
