@@ -775,29 +775,71 @@ footer {
 
 /* Smartphone design */
 /* This ensures the site adapts to smaller screen sizes like smartphones */
-@media only screen and (max-width: 600px) {
-    /* Adjustments for smartphones */
+@media only screen and (max-width: 768px) {
     body {
-        font-size: 16px;  /* Adjust font size for readability */
+        font-size: 1rem;
+        padding: 0 10px;
     }
 
-    .container {
-        padding: 10px;  /* Add padding for smaller screens */
+    header .name {
+        font-size: 2em;
     }
 
-    .navbar {
-        font-size: 14px;  /* Reduce the font size of navigation */
+    nav ul {
+        flex-direction: column;
+        gap: 8px;
     }
 
-    /* Stack elements vertically on smaller screens */
-    .dropdown {
-        width: 100%;  /* Ensure dropdowns use full width */
+    nav ul li {
+        display: block;
+        margin: 5px 0;
     }
 
-    /* Hide large images or adjust sizes */
-    .hero-image {
-        width: 100%;  /* Make images responsive */
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .about-text {
+        width: 100%;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .research-item,
+    .research-item2 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .research-item.main {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .slide-image {
+        width: 100% !important;
         height: auto;
+    }
+
+    .slideshow-container {
+        height: auto;
+    }
+
+    #Teaching,
+    section {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .social-icons {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }
 
