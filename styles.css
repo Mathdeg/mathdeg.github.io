@@ -775,71 +775,50 @@ footer {
 
 /* Smartphone design */
 /* This ensures the site adapts to smaller screen sizes like smartphones */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
+    /* Global font size reduction */
     body {
+        font-size: 0.9rem; /* Smaller base text size */
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h3 {
         font-size: 1rem;
-        padding: 0 10px;
     }
 
-    header .name {
-        font-size: 2em;
+    p, li {
+        font-size: 0.95rem;
+        line-height: 1.4;
     }
 
-    nav ul {
-        flex-direction: column;
-        gap: 8px;
+    nav ul li a {
+        font-size: 0.95rem;
+        padding: 6px 10px;
     }
 
-    nav ul li {
-        display: block;
-        margin: 5px 0;
+    .btn,
+    button {
+        font-size: 0.95rem;
+        padding: 8px 16px;
     }
 
-    .about-content {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .about-text {
-        width: 100%;
+    .about-text,
+    .research-item,
+    .research-item2,
+    .abstract {
+        font-size: 0.9rem;
     }
 
     .profile-img {
-        width: 150px;
-        height: 150px;
-    }
-
-    .research-item,
-    .research-item2 {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .research-item.main {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .slide-image {
-        width: 100% !important;
-        height: auto;
-    }
-
-    .slideshow-container {
-        height: auto;
-    }
-
-    #Teaching,
-    section {
-        width: 100%;
-        padding: 10px;
-    }
-
-    .social-icons {
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
+        width: 140px;
+        height: 140px;
     }
 }
 
