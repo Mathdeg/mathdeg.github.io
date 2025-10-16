@@ -957,3 +957,89 @@ footer {
         transform: scale(1);
     }
 }
+
+
+
+
+
+/* === Highlight diagonal + arrow color sync with click behavior === */
+
+.research-item.main {
+  position: relative;
+  border-radius: 16px;
+  overflow: visible;
+}
+
+/* Angle animable */
+@property --ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Highlight diagonal */
+.research-item.main::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  padding: 2px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    conic-gradient(
+      from var(--ring-angle),
+      transparent 0deg,
+      rgba(255,255,255,0.0) 300deg,
+      rgba(140,200,255,0.25) 325deg,
+      rgba(90,180,255,0.6) 340deg,
+      rgba(255,255,255,0.95) 350deg,
+      rgba(90,180,255,0.6) 355deg,
+      transparent 360deg
+    );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  filter: drop-shadow(0 0 10px rgba(90,170,255,0.4));
+  opacity: 0;
+}
+
+/* Animation : diagonale bas-gauche vers haut-droit, 1 seconde */
+@keyframes diagonal-sweep {
+  0%   { --ring-angle: 135deg; opacity: 1; }
+  80%  { --ring-angle: 495deg; opacity: 1; }
+  100% { --ring-angle: 495deg; opacity: 0; }
+}
+
+.research-item.main:hover::before,
+.research-item.main:focus-within::before {
+  animation: diagonal-sweep 1s linear 0s 1 both;
+}
+
+/* ---- Flèche synchronisée ---- */
+
+/* Transition douce */
+.research-item.main .arrow2 {
+  transition: border-top-color 0.25s ease, filter 0.25s ease;
+}
+
+/* Pendant le survol => bleue (comme le contour) */
+.research-item.main:hover .arrow2,
+.research-item.main:focus-within .arrow2 {
+  border-top-color: rgba(80,170,255,0.9);
+  filter: drop-shadow(0 0 4px rgba(90,170,255,0.7));
+}
+
+/* ⚡ MAIS : si la boîte est "open" (abstract affiché), repasse en noir */
+.research-item.main.open .arrow2 {
+  border-top-color: #000 !important;
+  filter: none !important;
+}
+
+/* Pendant que c’est ouvert, on ignore le survol (reste noir) */
+.research-item.main.open:hover .arrow2,
+.research-item.main.open:focus-within .arrow2 {
+  border-top-color: #000 !important;
+  filter: none !important;
+}
