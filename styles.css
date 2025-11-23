@@ -1043,3 +1043,12 @@ footer {
   border-top-color: #000 !important;
   filter: none !important;
 }
+
+.linkedin-link {
+    text-decoration: none;
+}
+
+.linkedin-link span {
+    text-decoration: none;
+    color: inherit; /* pour garder la couleur du texte */
+}
