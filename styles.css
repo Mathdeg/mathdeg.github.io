@@ -1,11 +1,13 @@
-/* Reset default margins and paddings */
-body, h1, h2, p, ul {
+/* ================================
+   GLOBAL RESET & BASE TYPOGRAPHY
+   ================================ */
+
+body, h1, h2, h3, p, ul {
     margin: 0;
     padding: 0;
     font-size: 1rem;
 }
 
-/* Global style */
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
@@ -14,149 +16,19 @@ body {
     color: #333;
     padding: 0;
     margin: 0;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Research container style */
-.research-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Adjusts the spacing between items */
-}
+/* ================================
+   HEADER & NAVIGATION
+   ================================ */
 
-.research-item {
-    background-color: #f9f9f9;
-    padding: 20px;
-    width: calc(100% - 20px); /* Adjust the width as needed */
-    box-sizing: border-box;
-    transition: transform 0.3s ease;
-    text-align: center;
-}
-
-/* Item de recherche secondaire */
-.research-item2.secondary {
-    display: flex;
-    flex-direction: column; /* Organise les éléments verticalement */
-    gap: 10px; /* Espacement entre les éléments */
-    background-color: #f9f9f9;
-    padding: 20px;
-    width: calc(100% - 20px); /* Prenez toute la largeur disponible */
-    box-sizing: border-box;
-    text-align: left;
-}
-
-/* Style for secondary research items (arrows on the left) */
-.research-item2.secondary .dropdown-toggle {
-    text-align: left; /* Align text to the left inside the button */
-    padding-left: 0; /* Remove any padding to ensure it’s left-aligned */
-}
-
-/* Adjust the arrow position to the left */
-.research-item2.secondary .arrow2 {
-    margin-left: 0; /* Make sure there's no extra margin pushing the arrow to the right */
-    margin-right: 10px; /* Optional: space between the arrow and text */
-    display: inline-block;
-}
-
-/* Style pour le titre du papier */
-.research-item2 h3 {
-    font-size: 1em; /* Taille du titre */
-    margin: 0; /* Enlever les marges par défaut */
-}
-
-.research-item:hover {
-    transform: scale(1.05);
-}
-
-/* Carousel container */
-.carousel {
-    position: relative;
-    width: 100%;
-    height: 200px; /* Adjust height as needed */
-    overflow: hidden;
-}
-
-/* Carousel images container */
-.carousel-images {
-    display: flex;
-    width: 300%; /* 100% per image */
-    height: 100%;
-    animation: scroll 15s linear infinite;
-}
-
-/* Carousel images */
-.carousel-images img {
-    width: 33.33%; /* Show one image at a time */
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Animation for scrolling */
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-66.66%); /* Move past two images */
-    }
-}
-
-/* Research item title style */
-.research-item h3 {
-    font-size: 1em; /* Smaller title size */
-    margin-bottom: 10px;
-}
-
-/* Research item text style */
-.research-item p {
-    margin: 5px 0;
-}
-
-.research-item .authors {
-    font-size: 1em;
-    color: #555;
-}
-
-.research-item .publication {
-    font-size: 0.9em;
-    color: #777;
-}
-
-.research-item2 .authors {
-    font-size: 1em;
-    color: #555;
-}
-
-.research-item2 .publication {
-    font-size: 0.9em;
-    color: #777;
-}
-
-/* Style pour l'élément principal centré */
-.research-item.main {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    background-color: #f9f9f9;
-    padding: 20px;
-    width: 100%; /* Largeur adaptable */
-    max-width: 800px; /* Limite la largeur de l'élément */
-    box-sizing: border-box;
-    text-align: center;
-
-    /* Marges automatiques pour centrer */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Header style */
 header {
     padding: 20px;
     text-align: center;
     position: relative;
 }
 
-/* Name style */
 header .name {
     font-size: 2.5em;
     margin-bottom: 10px;
@@ -164,186 +36,6 @@ header .name {
     cursor: pointer;
 }
 
-/* Arrow Container */
-.arrow-container {
-    text-align: center;
-}
-
-/* Arrow Style */
-.arrow {
-    display: inline-block;
-    position: relative;
-}
-
-/* Arrow Animation */
-.arrow span {
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-bottom: 2px solid #333;
-    border-right: 2px solid #333;
-    transform: rotate(45deg);
-    margin: -10px;
-    animation: animate 1.5s infinite;
-}
-
-@keyframes animate {
-    0% {
-        opacity: 0;
-        transform: rotate(45deg) translate(-10px, -10px);
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: rotate(45deg) translate(10px, 10px);
-    }
-}
-
-/* abstract */
-/* Arrow Container */
-.dropdown-toggle {
-    cursor: pointer;
-    display: inline-block;
-    margin-top: 2px;
-}
-
-.research-item .abstract {
-    display: none;  /* Résumé caché par défaut */
-}
-
-.research-item.open .abstract {
-    display: block;  /* Affiche l'abstract quand .research-item a la classe 'open' */
-}
-
-.research-item2 .abstract {
-    display: none;  /* Résumé caché par défaut */
-}
-
-.research-item2.open .abstract {
-    display: block;  /* Affiche l'abstract quand .research-item a la classe 'open' */
-}
-
-/* Main arrow style */
-.arrow2 {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 8px solid #333;
-    transition: transform 0.3s ease;
-    position: relative;
-}
-
-/* Unique arrow style */
-.unique-arrow2 {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid #616060;
-    transition: transform 0.3s ease;
-    animation: bounce-unique 1s infinite;
-    position: relative;
-}
-
-/* Unique bouncing animation for the arrow */
-@keyframes bounce-unique {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-/* Rotate the unique arrow when active */
-.toggle-active {
-    transform: rotate(180deg);
-    transition: transform 0.3s ease;
-}
-
-.toggle-button {
-    transition: transform 0.3s ease;
-}
-
-/* Cacher le bouton, mais laisser la flèche cliquable */
-button.dropdown-toggle {
-    background: transparent; /* Pas de fond */
-    border: none; /* Pas de bordure */
-    padding: 20px 25px; /* Pas de padding */
-    cursor: pointer;  /* Assurer que l'élément peut être cliqué */
-    display: block; /* Ne prend que la taille de la flèche */
-}
-
-/* When the abstract is opened, the arrow rotates */
-.research-item.open .arrow2 {
-    transform: rotate(180deg); /* Rotate arrow to point upwards */
-}
-
-
-/* Bouncing animation for the arrow to grab attention */
-@keyframes bounce {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-/* Apply the bounce animation on hover */
-.arrow2:hover {
-    animation: bounce 1s infinite;
-}
-
-/* Apply the bounce animation when hovering over the entire research item */
-.research-item.main:hover .arrow2 {
-    animation: bounce 1s infinite;
-}
-
-button.dropdown-toggle:hover {
-    animation: bounce 1s infinite;
-}
-
-/* Abstract Style */
-.abstract {
-    margin-top: 10px;
-    font-size: 0.9em;
-    color: #555;
-    opacity: 0;  /* Initially invisible */
-    height: 0;  /* No height when hidden */
-    visibility: hidden; /* Hide the abstract */
-    overflow: hidden; /* Hide anything overflowing */
-    transition: opacity 0.3s ease, visibility 0s 0.3s, height 0.3s ease;
-}
-
-/* When dropdown is active, show the abstract */
-.research-item.open .abstract {
-    opacity: 1; /* Make the abstract visible */
-    visibility: visible;  /* Ensure it's not hidden */
-    height: auto;  /* Restore the height */
-    transition: opacity 0.3s ease, visibility 0s 0s, height 0.3s ease;
-}
-
-.research-item2.open .abstract {
-    opacity: 1; /* Make the abstract visible */
-    visibility: visible;  /* Ensure it's not hidden */
-    height: auto;  /* Restore the height */
-    transition: opacity 0.3s ease, visibility 0s 0s, height 0.3s ease;
-}
-
-
-/* Navigation menu style */
 nav ul {
     list-style: none;
     padding: 0;
@@ -364,13 +56,6 @@ nav ul li a {
     overflow: hidden;
     display: inline-block;
 }
-button, .btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 
 nav ul li a::before {
     content: '';
@@ -387,11 +72,22 @@ nav ul li a:hover::before {
     left: 0;
 }
 
-nav ul li a:hover {
-    color: #333;
+/* ================================
+   GENERIC BUTTONS
+   ================================ */
+
+button,
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* Section style */
+/* ================================
+   LAYOUT: SECTIONS & ABOUT
+   ================================ */
+
 section {
     background-color: transparent;
     margin: 20px auto;
@@ -400,7 +96,6 @@ section {
     max-width: 1200px;
 }
 
-/* About section style */
 .about-content {
     display: flex;
     align-items: flex-start;
@@ -426,19 +121,32 @@ section {
     transform: scale(1.05);
 }
 
-/* Research item style */
+/* ================================
+   RESEARCH ITEMS
+   ================================ */
+
+.research-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Generic research item tile */
 .research-item {
     background-color: #f9f9f9;
     padding: 20px;
     width: calc(50% - 20px);
     box-sizing: border-box;
     transition: transform 0.3s ease;
+    text-align: center;
 }
 
 .research-item:hover {
     transform: scale(1.05);
 }
 
+/* Secondary research items */
 .research-item2 {
     background-color: #f9f9f9;
     padding: 20px;
@@ -451,6 +159,215 @@ section {
     transform: scale(1.05);
 }
 
+/* Layout for secondary items stacked full-width */
+.research-item2.secondary {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    width: calc(100% - 20px);
+}
+
+/* Secondary title */
+.research-item2 h3 {
+    font-size: 1em;
+    margin: 0;
+}
+
+/* Main research item centered and highlighted */
+.research-item.main {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    border-radius: 16px;
+    overflow: visible;
+}
+
+/* Titles, authors, publication text */
+.research-item h3 {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.research-item p {
+    margin: 5px 0;
+}
+
+.research-item .authors,
+.research-item2 .authors {
+    font-size: 1em;
+    color: #555;
+}
+
+.research-item .publication,
+.research-item2 .publication {
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* ================================
+   ARROW DOWN (SCROLL HINT)
+   ================================ */
+
+.arrow-container {
+    text-align: center;
+}
+
+.arrow {
+    display: inline-block;
+    position: relative;
+}
+
+.arrow span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid #333;
+    border-right: 2px solid #333;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: arrow-down 1.5s infinite;
+}
+
+@keyframes arrow-down {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-10px, -10px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+}
+
+/* ================================
+   ABSTRACT DROPDOWNS & ARROWS
+   ================================ */
+
+.dropdown-toggle {
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+/* Default dropdown button (arrow only) */
+button.dropdown-toggle {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* MAIN PAPER: center arrow under the block */
+.research-item.main button.dropdown-toggle {
+    display: block;
+    margin: 8px auto 0;
+    text-align: center;
+}
+
+/* INDIA PAPER: arrow close to "Journal..." text */
+.research-item2 .publication .dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 4px;   /* 0–4px if you want closer/further */
+    vertical-align: middle;
+}
+
+/* Abstract containers basic fallback */
+.research-item .abstract,
+.research-item2 .abstract {
+    display: none;
+}
+
+/* Smooth show/hide */
+.abstract {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: opacity 0.3s ease, visibility 0s 0.3s, height 0.3s ease;
+}
+
+.research-item.open .abstract,
+.research-item2.open .abstract {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    transition: opacity 0.3s ease, visibility 0s 0s, height 0.3s ease;
+}
+
+/* Arrow triangle */
+.arrow2 {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #333;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+/* Rotate arrow when open */
+.research-item.open .arrow2,
+.research-item2.open .arrow2 {
+    transform: rotate(180deg);
+}
+
+/* Bounce on hover */
+@keyframes bounce {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+.arrow2:hover,
+.research-item.main:hover .arrow2,
+button.dropdown-toggle:hover .arrow2 {
+    animation: bounce 1s infinite;
+}
+
+/* Optional unique arrow variant */
+.unique-arrow2 {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #616060;
+    transition: transform 0.3s ease;
+    animation: bounce-unique 1s infinite;
+    position: relative;
+}
+
+@keyframes bounce-unique {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* ================================
+   IMAGES & SLIDESHOW
+   ================================ */
+
 .research-img {
     width: 100%;
     height: auto;
@@ -462,14 +379,73 @@ section {
     transform: scale(1.1);
 }
 
-/* Footer style */
+.slide-image {
+    width: calc(50% - 20px);
+    height: auto;
+    object-fit: contain;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.slideshow {
+    display: flex;
+    width: 200%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    flex: 1 0 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes fade {
+    0%   { opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.slide:nth-child(1) {
+    animation: fade 15s infinite;
+}
+
+.slide:nth-child(2) {
+    animation: fade 15s infinite 5s;
+}
+
+.slide:nth-child(3) {
+    animation: fade 15s infinite 10s;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+
 footer {
     text-align: center;
     padding: 10px 0;
     background-color: #fff;
 }
 
-/* Teaching Section Style */
+/* ================================
+   TEACHING SECTION
+   ================================ */
+
 #Teaching {
     margin: 20px auto;
     padding: 20px;
@@ -498,15 +474,6 @@ footer {
     margin: 5px 0;
 }
 
-#Teaching p strong {
-    font-size: 1.1em;
-    font-weight: normal;
-}
-
-#Teaching p em {
-    font-style: italic;
-}
-
 #Teaching ul {
     list-style-type: none;
     padding-left: 0;
@@ -526,7 +493,10 @@ footer {
     left: 0;
 }
 
-/* Name and Tree Container */
+/* ================================
+   NAME + TREE ANIMATION
+   ================================ */
+
 .name-tree-container {
     display: inline-flex;
     align-items: center;
@@ -546,7 +516,6 @@ footer {
     margin-top: -10px;
 }
 
-/* Tree structure */
 .leaves,
 .wood {
     height: 50%;
@@ -628,7 +597,6 @@ footer {
     transition: transform 0.3s;
 }
 
-/* Hover Effects */
 .name-tree-container:hover .tree {
     opacity: 1;
     transform: scale(1);
@@ -655,89 +623,129 @@ footer {
     transition-delay: 0.6s;
 }
 
-
-/* Ajuster la taille des images dans le slideshow */
-.slide-image {
-    width: calc(50% - 20px);
-    height: auto; /* Garder l'aspect ratio de l'image */
-    object-fit: contain; /* Permet à l'image de s'adapter sans être coupée */
+@keyframes growTreeOnLoad {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
-
-/* Slideshow container */
-.slideshow-container {
-    position: relative;
-    width: 100%;
-    height: 200px; /* Adjust height as needed */
-    overflow: hidden;
+.tree.animate-on-load {
+    animation: growTreeOnLoad 1.2s ease-out forwards;
 }
 
-
-/* Slideshow */
-.slideshow {
-    display: flex;
-    width: 200%; /* Adjust according to number of slides */
-    transition: transform 0.5s ease-in-out;
+.tree .leaf {
+    transform: scale(0);
+    transition: transform 0.5s ease;
 }
 
-/* Slide */
-.slide {
-    width: 100%;
-    height: 100%;
-    flex: 1 0 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    position: absolute;
+.tree.berries-visible .leaf::before {
+    transform: translate(-50%, 30%) scale(1);
+    transition: transform 0.4s ease;
+    transition-delay: 0.2s;
 }
 
-/* Ensure images fill the slide container */
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.tree.grow-on-hover {
+    animation: growTreeHover 0.8s ease-out forwards;
 }
 
-/* Keyframes for fading in and out */
-@keyframes fade {
-    0% { opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { opacity: 0; }
+@keyframes growTreeHover {
+    0% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
-/* Apply the animation to the slides */
-.slide:nth-child(1) {
-    animation: fade 15s infinite;
+/* ================================
+   HIGHLIGHT DIAGONAL ON MAIN ITEM
+   ================================ */
+
+@property --ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }
 
-.slide:nth-child(2) {
-    animation: fade 15s infinite 5s;
+.research-item.main::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  padding: 2px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    conic-gradient(
+      from var(--ring-angle),
+      transparent 0deg,
+      rgba(255,255,255,0.0) 300deg,
+      rgba(140,200,255,0.25) 325deg,
+      rgba(90,180,255,0.6) 340deg,
+      rgba(255,255,255,0.95) 350deg,
+      rgba(90,180,255,0.6) 355deg,
+      transparent 360deg
+    );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  filter: drop-shadow(0 0 10px rgba(90,170,255,0.4));
+  opacity: 0;
 }
 
-.slide:nth-child(3) {
-    animation: fade 15s infinite 10s;
+@keyframes diagonal-sweep {
+  0%   { --ring-angle: 135deg; opacity: 1; }
+  80%  { --ring-angle: 495deg; opacity: 1; }
+  100% { --ring-angle: 495deg; opacity: 0; }
 }
 
-.twitter-link {
-    text-decoration: none; /* Removes underline from entire link */
+.research-item.main:hover::before,
+.research-item.main:focus-within::before {
+  animation: diagonal-sweep 1s linear 0s 1 both;
 }
 
-.twitter-link span {
-    text-decoration: none; /* Ensures the @MathildeDegois stays without underline */
-    color: inherit; /* Keeps the text color consistent */
+.research-item.main .arrow2 {
+  transition: border-top-color 0.25s ease, filter 0.25s ease;
 }
 
-.bluesky-link {
+.research-item.main:hover .arrow2,
+.research-item.main:focus-within .arrow2 {
+  border-top-color: rgba(80,170,255,0.9);
+  filter: drop-shadow(0 0 4px rgba(90,170,255,0.7));
+}
+
+.research-item.main.open .arrow2,
+.research-item.main.open:hover .arrow2,
+.research-item.main.open:focus-within .arrow2 {
+  border-top-color: #000 !important;
+  filter: none !important;
+}
+
+/* ================================
+   LINKS / SOCIAL / MISC
+   ================================ */
+
+.twitter-link,
+.bluesky-link,
+.linkedin-link {
     text-decoration: none;
 }
 
-.bluesky-link span {
+.twitter-link span,
+.bluesky-link span,
+.linkedin-link span {
     text-decoration: none;
     color: inherit;
 }
 
 #research h2 {
-    font-size: 1.5em; /* Try 2.5em or 3em if you want it larger */
+    font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -773,10 +781,154 @@ footer {
     color: #555;
 }
 
-/* Smartphone design */
-/* This ensures the site adapts to smaller screen sizes like smartphones */
+.visit-note {
+    margin-top: 1.5em;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.paper-link {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.paper-link:hover {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.publication a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.publication a:hover {
+    text-decoration: underline;
+    color: inherit;
+}
+
+/* ================================
+   DARK MODE
+   ================================ */
+
+.theme-toggle {
+    margin-top: 10px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    background: rgba(255, 255, 255, 0.8);
+    color: #111827;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18);
+}
+
+.theme-toggle:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+body.dark-mode {
+    background-color: #050816;
+    color: #e5e7eb;
+}
+
+body.dark-mode header {
+    background: transparent;
+    color: #e5e7eb;
+}
+
+body.dark-mode footer {
+    background-color: #020617;
+    color: #9ca3af;
+}
+
+body.dark-mode section {
+    background-color: transparent;
+}
+
+body.dark-mode .research-item,
+body.dark-mode .research-item2 {
+    background-color: #0b1220;
+    color: #e5e7eb;
+    box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.35);
+}
+
+body.dark-mode .previous-research {
+    background-color: #020617;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+body.dark-mode a {
+    color: #bfdbfe;
+}
+
+body.dark-mode a:hover {
+    color: #e5e7eb;
+}
+
+body.dark-mode nav ul li a {
+    color: #e5e7eb;
+}
+
+body.dark-mode .profile-img {
+    border-color: #93c5fd;
+}
+
+body.dark-mode .social-icon {
+    filter: brightness(0.9);
+}
+
+body.dark-mode button,
+body.dark-mode .btn {
+    background-color: #111827;
+    color: #e5e7eb;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+body.dark-mode .theme-toggle {
+    background: rgba(15, 23, 42, 0.95);
+    color: #f9fafb;
+    border-color: rgba(148, 163, 184, 0.9);
+}
+
+body.dark-mode #Teaching ul li::before {
+    color: #9ca3af;
+}
+
+body.dark-mode .publication {
+    color: #9ca3af;
+}
+
+body.dark-mode .visit-note {
+    color: #e5e7eb;
+}
+
+/* ================================
+   MOBILE
+   ================================ */
+
 @media only screen and (max-width: 600px) {
-    /* Base font and element sizing */
+
     body {
         font-size: 0.9rem;
     }
@@ -798,14 +950,12 @@ footer {
         line-height: 1.4;
     }
 
-    /* Adjust buttons */
     .btn,
     button {
         font-size: 0.9rem;
         padding: 8px 14px;
     }
 
-    /* Navigation: compressed horizontal menu */
     nav ul {
         display: flex;
         flex-wrap: nowrap;
@@ -824,7 +974,6 @@ footer {
         padding: 4px 6px;
     }
 
-    /* About section: reverse order for photo-first display */
     .about-content {
         flex-direction: column-reverse;
         align-items: center;
@@ -844,7 +993,6 @@ footer {
         object-fit: cover;
     }
 
-    /* Abstract and secondary research readability */
     .abstract {
         font-size: 0.85rem;
         line-height: 1.3;
@@ -871,22 +1019,19 @@ footer {
         font-size: 0.85rem;
     }
 
-    /* Buttons and arrows on research items */
     button.dropdown-toggle {
-        padding: 10px;
+        padding: 0;
     }
 
     .arrow2 {
         transform: scale(0.9);
     }
 
-    /* Teaching section spacing */
     #Teaching ul li {
         font-size: 0.9rem;
         padding-left: 15px;
     }
 
-    /* Social icons */
     .social-icons {
         gap: 8px;
     }
@@ -896,159 +1041,7 @@ footer {
         height: 18px;
     }
 
-    /* Optional: smaller tree for mobile */
     .tree {
         transform: scale(0.8);
     }
-}
-
-.visit-note {
-    margin-top: 1.5em;  /* Adds vertical space from previous text */
-    font-size: 1rem;
-    line-height: 1.5;
-    font-weight: normal;
-    font-style: normal;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center; /* or flex-start if preferred */
-    align-items: center;
-    gap: 10px; /* controls spacing between logos */
-}
-
-@keyframes growTreeOnLoad {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.tree.animate-on-load {
-    animation: growTreeOnLoad 1.2s ease-out forwards;
-}
-
-/* Ensure leaves are initially hidden (override hover behavior) */
-.tree .leaf {
-    transform: scale(0);
-    transition: transform 0.5s ease;
-}
-
-/* Baies rouges dans les feuilles */
-.tree.berries-visible .leaf::before {
-    transform: translate(-50%, 30%) scale(1);
-    transition: transform 0.4s ease;
-    transition-delay: 0.2s; /* Décalage après apparition de la feuille */
-}
-
-.tree.grow-on-hover {
-    animation: growTreeHover 0.8s ease-out forwards;
-}
-
-@keyframes growTreeHover {
-    0% {
-        transform: scale(0.8);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-
-
-
-
-/* === Highlight diagonal + arrow color sync with click behavior === */
-
-.research-item.main {
-  position: relative;
-  border-radius: 16px;
-  overflow: visible;
-}
-
-/* Angle animable */
-@property --ring-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-
-/* Highlight diagonal */
-.research-item.main::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  padding: 2px;
-  border-radius: inherit;
-  pointer-events: none;
-  background:
-    conic-gradient(
-      from var(--ring-angle),
-      transparent 0deg,
-      rgba(255,255,255,0.0) 300deg,
-      rgba(140,200,255,0.25) 325deg,
-      rgba(90,180,255,0.6) 340deg,
-      rgba(255,255,255,0.95) 350deg,
-      rgba(90,180,255,0.6) 355deg,
-      transparent 360deg
-    );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  filter: drop-shadow(0 0 10px rgba(90,170,255,0.4));
-  opacity: 0;
-}
-
-/* Animation : diagonale bas-gauche vers haut-droit, 1 seconde */
-@keyframes diagonal-sweep {
-  0%   { --ring-angle: 135deg; opacity: 1; }
-  80%  { --ring-angle: 495deg; opacity: 1; }
-  100% { --ring-angle: 495deg; opacity: 0; }
-}
-
-.research-item.main:hover::before,
-.research-item.main:focus-within::before {
-  animation: diagonal-sweep 1s linear 0s 1 both;
-}
-
-/* ---- Flèche synchronisée ---- */
-
-/* Transition douce */
-.research-item.main .arrow2 {
-  transition: border-top-color 0.25s ease, filter 0.25s ease;
-}
-
-/* Pendant le survol => bleue (comme le contour) */
-.research-item.main:hover .arrow2,
-.research-item.main:focus-within .arrow2 {
-  border-top-color: rgba(80,170,255,0.9);
-  filter: drop-shadow(0 0 4px rgba(90,170,255,0.7));
-}
-
-/* ⚡ MAIS : si la boîte est "open" (abstract affiché), repasse en noir */
-.research-item.main.open .arrow2 {
-  border-top-color: #000 !important;
-  filter: none !important;
-}
-
-/* Pendant que c’est ouvert, on ignore le survol (reste noir) */
-.research-item.main.open:hover .arrow2,
-.research-item.main.open:focus-within .arrow2 {
-  border-top-color: #000 !important;
-  filter: none !important;
-}
-
-.linkedin-link {
-    text-decoration: none;
-}
-
-.linkedin-link span {
-    text-decoration: none;
-    color: inherit; /* pour garder la couleur du texte */
 }
