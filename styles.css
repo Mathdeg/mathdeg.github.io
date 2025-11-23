@@ -817,100 +817,151 @@ footer {
 }
 
 /* ================================
-   DARK MODE
+   DARK MODE – SOFTER / PRETTIER
    ================================ */
 
+/* --- Bouton Night/Light petit + arrondi --- */
 .theme-toggle {
-    margin-top: 10px;
-    padding: 6px 14px;
-    font-size: 0.9rem;
-    border-radius: 999px;
+    padding: 6px 14px;               /* petit et compact */
+    font-size: 0.85rem;              /* texte plus petit */
+    border-radius: 999px;            /* forme arrondie pilule */
     border: 1px solid rgba(148, 163, 184, 0.7);
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9); 
     color: #111827;
     cursor: pointer;
+
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
-    transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    transition: 
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.15s ease;
 }
 
 .theme-toggle:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
 }
 
 .theme-toggle:active {
     transform: translateY(0);
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+/* Version dark mode du même petit bouton */
+body.dark-mode .theme-toggle {
+    background: rgba(15, 23, 42, 0.85);
+    color: #f1f5f9;
+    border-color: rgba(148, 163, 184, 0.4);
 }
 
 body.dark-mode {
-    background-color: #050816;
+    /* deep navy gradient instead of flat black */
+    background:
+        radial-gradient(circle at 0% 0%, #1e293b 0, transparent 55%),
+        radial-gradient(circle at 100% 0%, #0f172a 0, transparent 55%),
+        #020617;
     color: #e5e7eb;
 }
 
+/* Header & footer */
 body.dark-mode header {
     background: transparent;
     color: #e5e7eb;
 }
 
 body.dark-mode footer {
-    background-color: #020617;
+    background: #020617;
     color: #9ca3af;
+    border-top: 1px solid rgba(148, 163, 184, 0.35);
 }
 
+/* Sections (let background show through) */
 body.dark-mode section {
     background-color: transparent;
 }
 
+/* Cards (research blocks, sleepy research, etc.) */
 body.dark-mode .research-item,
-body.dark-mode .research-item2 {
-    background-color: #0b1220;
+body.dark-mode .research-item2,
+body.dark-mode .previous-research {
+    background: radial-gradient(circle at top left, #1e293b 0, #020617 70%);
     color: #e5e7eb;
-    box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.35);
+    box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.6),
+        0 0 0 1px rgba(148, 163, 184, 0.35);
+    border-radius: 16px;
 }
 
+/* Tighten previous research specifically */
 body.dark-mode .previous-research {
-    background-color: #020617;
-    border-radius: 12px;
     padding: 16px;
 }
 
+/* Body text inside cards */
+body.dark-mode .research-item p,
+body.dark-mode .research-item2 p,
+body.dark-mode .previous-research p {
+    color: #d1d5db;
+}
+
+/* Links */
 body.dark-mode a {
-    color: #bfdbfe;
+    color: #93c5fd;
+    text-decoration-color: rgba(147, 197, 253, 0.6);
 }
 
 body.dark-mode a:hover {
     color: #e5e7eb;
+    text-decoration-color: #e5e7eb;
 }
 
+/* Keep nav links readable and slightly brighter on hover */
 body.dark-mode nav ul li a {
     color: #e5e7eb;
 }
 
+body.dark-mode nav ul li a::before {
+    background-color: #60a5fa;
+}
+
+/* Profile image & social icons */
 body.dark-mode .profile-img {
     border-color: #93c5fd;
 }
 
 body.dark-mode .social-icon {
-    filter: brightness(0.9);
+    filter: brightness(0.95);
 }
 
+/* Generic buttons */
 body.dark-mode button,
 body.dark-mode .btn {
-    background-color: #111827;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
     color: #e5e7eb;
     border: 1px solid rgba(148, 163, 184, 0.7);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
 }
 
-body.dark-mode .theme-toggle {
-    background: rgba(15, 23, 42, 0.95);
-    color: #f9fafb;
-    border-color: rgba(148, 163, 184, 0.9);
+/* Sleepy button keeps a soft glow */
+body.dark-mode #show-sleepy {
+    background: linear-gradient(135deg, #1f2937, #020617);
+    color: #e5e7eb;
 }
 
+
+
+/* Make X logo visible in dark mode */
+body.dark-mode img[alt="X logo"] {
+    filter: invert(1) brightness(1.2);
+}
+
+/* Teaching bullets & subtle details */
 body.dark-mode #Teaching ul li::before {
     color: #9ca3af;
 }
@@ -921,6 +972,60 @@ body.dark-mode .publication {
 
 body.dark-mode .visit-note {
     color: #e5e7eb;
+}
+
+/* Scroll arrow (center “down” chevron) */
+body.dark-mode .arrow span {
+    border-bottom-color: #9ca3af;
+    border-right-color: #9ca3af;
+}
+
+/* Tree: slightly cooler trunk & brighter leaves/berries */
+body.dark-mode .wood,
+body.dark-mode .wood::before,
+body.dark-mode .wood::after {
+    background-color: #f97316; /* warm orange-brown */
+}
+
+body.dark-mode #one,
+body.dark-mode #two,
+body.dark-mode #three {
+    filter: brightness(1.1);
+}
+
+body.dark-mode .leaf::before {
+    background-color: #fb7185; /* softer pink berries */
+}
+
+/* Main research highlight ring tuned for dark mode */
+body.dark-mode .research-item.main::before {
+    background:
+        conic-gradient(
+            from var(--ring-angle),
+            transparent 0deg,
+            rgba(15, 23, 42, 0.0) 290deg,
+            rgba(56, 189, 248, 0.15) 320deg,
+            rgba(56, 189, 248, 0.7) 340deg,
+            rgba(248, 250, 252, 0.9) 350deg,
+            rgba(56, 189, 248, 0.7) 355deg,
+            transparent 360deg
+        );
+    filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.55));
+}
+
+/* Arrow color in main card on hover stays in the same palette */
+body.dark-mode .research-item.main:hover .arrow2,
+body.dark-mode .research-item.main:focus-within .arrow2 {
+    border-top-color: rgba(96, 165, 250, 0.95);
+    filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.9));
+}
+
+/* En dark mode, les boutons de flèche restent totalement invisibles */
+body.dark-mode button.dropdown-toggle {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
 }
 
 /* ================================
