@@ -121,6 +121,12 @@ section {
     text-decoration: underline;
 }
 
+/* Dark blue emphasis ONLY in the about section */
+.about-text strong {
+    color: #2a65b7;   /* dark academic blue */
+    font-weight: 700;
+}
+
 .profile-img {
     width: 200px;
     height: 200px;
