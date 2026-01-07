@@ -108,6 +108,19 @@ section {
     flex: 1;
 }
 
+/* Intro text links: same color as text, underlined */
+.about-text a {
+    color: inherit;          /* same color as surrounding text */
+    text-decoration: underline;
+    font-weight: normal;     /* keep normal unless overridden */
+}
+
+/* Optional: keep same behavior on hover */
+.about-text a:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+
 .profile-img {
     width: 200px;
     height: 200px;
