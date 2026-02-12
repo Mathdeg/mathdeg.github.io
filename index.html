@@ -1,440 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mathilde Degois - PhD</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mathilde Degois — PhD</title>
 
-    <!-- Meta Description: Important for SEO -->
-    <meta name="description" content="Mathilde Degois is a PhD candidate in Economics at ENS (Université Paris-Saclay) and AgroParisTech. Explore her research on environmental and development economics, with a focus on water-related issues.">
+  <meta name="description" content="Mathilde Degois is a PhD candidate in Economics at ENS Paris-Saclay and AgroParisTech. Research in environmental and development economics with a focus on water-related issues." />
+  <meta name="keywords" content="Mathilde Degois, PhD, Economics, ENS Paris-Saclay, AgroParisTech, environmental economics, development economics, water, research, teaching" />
+  <meta name="author" content="Mathilde Degois" />
+  <meta name="robots" content="index, follow" />
 
-    <!-- Meta Keywords: Helps search engines understand relevant keywords -->
-    <meta name="keywords" content="Mathilde Degois, PhD, Economics, ENS Paris-Saclay, AgroParisTech, environmental economics, development economics, water-related issues, research, teaching">
-
-    <!-- Author: Indicates the author of the website -->
-    <meta name="author" content="Mathilde Degois">
-
-    <!-- Meta Robots: Tells search engines to index the page and follow links -->
-    <meta name="robots" content="index, follow">
-
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <style>
-        /* Set background color to white */
-        body {
-            background-color: white;
-        }
-
-        /* Smaller X logo */
-        .social-icon {
-            width: 20px;
-            height: 20px;
-            vertical-align: middle;
-            margin: 0 5px; /* Optional spacing between icons */
-        }
-
-        /* Center the X logo below the profile image */
-        .profile-container {
-            text-align: center;
-        }
-
-        /* Research items style */
-        .research-item {
-            margin-bottom: 40px;
-        }
-
-        .slideshow-container {
-            width: 100%;
-            position: relative;
-        }
-
-        .slide {
-            display: none;
-        }
-
-        .slide.active {
-            display: block;
-        }
-
-        .research-img-right {
-            width: 50%;
-            float: right;
-            margin-left: 20px;
-        }
-    </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-    <header>
-        <div class="name-tree-container">
-            <span class="name">Mathilde Degois</span>
-            <div class="tree">
-                <div class="leaves">
-                    <div id="one" class="leaf"></div>
-                    <div id="two" class="leaf"></div>
-                    <div id="three" class="leaf"></div>
-                </div>
-                <div class="wood"></div>
+  <!-- Theme toggle (icon only) -->
+  <button id="theme-toggle" class="theme-toggle-fab" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+    🌙
+  </button>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <div class="header-full">
+        <div class="name-tree-container" aria-label="Site title">
+          <span class="name">Mathilde Degois</span>
+
+          <div class="tree" id="tree" aria-hidden="true">
+            <div class="leaves">
+              <div id="one" class="leaf"></div>
+              <div id="two" class="leaf"></div>
+              <div id="three" class="leaf"></div>
             </div>
-        </div>
-        <p>PhD Candidate</p>
-
-        <!-- 🔆 Night mode toggle button -->
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-            🌙 Night
-        </button>
-
-        <nav>
-            <ul>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#Teaching">Teaching</a></li>
-                <li><a href="https://drive.google.com/file/d/10VpbNYFfKolzKGZBAO_QMp8_gS4eQ3a3/view?usp=sharing" target="_blank">CV</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    
-
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>Welcome to my website!</h2>
-                <p>I am a 3rd year PhD candidate in Economics at <a href="https://ens-paris-saclay.fr/en" target="_blank">ENS Paris-Saclay </a> and <a href="https://www.agroparistech.fr/" target="_blank">AgroParisTech</a>, affiliated with the <a href="https://www.ceps-paris-saclay.fr/" target="_blank"> CEPS </a> and <a href="https://www6.versailles-grignon.inrae.fr/psae_eng/" target="_blank"> PSAE </a> labs. I am co-supervised by <a href="https://julienwolfersberger.wordpress.com/" target="_blank">Julien Wolfersberger</a> and Thomas Vendryes.</p>
-                <p>
-                    My research interests lie between <strong>environmental</strong> and 
-                    <strong>development economics</strong>, with a focus on 
-                    <strong>water</strong>-related issues. 
-                    I use applied microeconometrics, quasi-experimental methods, and spatial analysis.
-                </p>
-                <p class="visit-note">
-    In <em>Spring 2026</em>, I will be visiting <a href="https://tammacarleton.com" target="_blank">Tamma Carleton</a> at UC Berkeley as a Fulbright laureate.
-    Don’t hesitate to <a href="mailto:mathilde.degois@ens-paris-saclay.fr">get in touch</a>!
-</p>
-            </div>
-            <div class="profile-container">
-                <img src="profile.jpg" alt="Portrait of Mathilde Degois" class="profile-img">
-                <!-- Centered X logo link below the profile photo -->
-                <div class="social-icons">
-                    <a href="https://x.com/MathildeDegois" target="_blank">
-                        <img src="logo-black.png" alt="X logo" class="social-icon">
-                    </a>
-                    <a href="https://bsky.app/profile/mathildegois.bsky.social" target="_blank">
-                        <img src="bluesky.png" alt="Bluesky logo" class="social-icon">
-                    </a>
-                    <a href="https://www.linkedin.com/in/mathilde-degois" target="_blank">
-                        <img src="linkedin.png" alt="LinkedIn logo" class="social-icon">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="arrow-container">
-        <div class="arrow">
-            <span></span>
-        </div>
-    </div>
-
-    <section id="research">
-        <h2>Research</h2>
-        <!-- Main Paper (Deforestation) -->
-        <div class="research-item main">
-            <h3><em>Clearing the Way to Conflict: Deforestation and Downwind Rainfall</em></h3>
-            <p class="authors">with T. Vendryes and J. Wolfersberger</p>
-            <p class="publication">Working Paper Available Soon</p>
-
-            <!-- New section: Next Presentation -->
-            <!-- New section: Next Presentation -->
-            <p class="publication">
-                Next Presented at:
-                <a href="https://cepr.org/system/files/2025-10/2025_Paris_Sym_Prelim.pdf" target="_blank">CEPR Paris Symposium 2025</a>
-            </p>
-            <!-- Arrow button to toggle abstract visibility -->
-            <button class="dropdown-toggle">
-                <span class="arrow2"></span>
-            </button>
-    
-            <!-- Le résumé (abstract) caché par défaut -->
-            <div class="abstract">
-                <p>This paper examines how deforestation affects regional rainfall and conflict in West Africa. Using spatial data on forest loss, wind trajectories, precipitation, and conflict from 2001 to 2022, we show that deforestation significantly reduces rainfall in downwind areas over distances of 200 km. These rainfall declines increase the incidence of low-intensity conflicts and both low- and high-intensity conflict events on the intensive margin. We estimate that a meaningful share of climate-induced violence in the region is driven by upstream land-use change. Our findings highlight the role of deforestation as an endogenous source of climate shocks and stress the importance of forest conservation for conflict mitigation.</p>
-            </div>
-
-            <!-- Slideshow for main paper -->
-            <div class="slideshow-container">
-                <div class="slideshow">
-                    <div class="slide active">
-                        <img src="2001.jpg" class="slide-image" />
-                    </div>
-                    <div class="slide active">
-                        <img src="total_df.jpg" class="slide-image" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-            <!-- Secondary Paper 1 (Agricultural Productivity) -->
-            <div class="research-item2 secondary">
-                <h3><em>Does Agricultural Productivity Lead to Capital Accumulation or Re-Location? Evidence from Long-Term Irrigation in India</em></h3>
-                <p class="authors">with D. Blakeslee and R. Fishman</p>
-                <p class="publication">
-                    Working Paper, 
-                    <a href="mailto:mathilde.degois@ens-paris-saclay.fr" style="color: inherit; text-decoration: underline;">
-                        <em>Available Upon Request.</em>
-                    </a>
-                </p>
-            </div>
-    
-            <!-- Secondary Paper 2 (Groundwater Use) -->
-            <div class="research-item2 secondary">
-                <h3>
-                    <a href="https://authors.elsevier.com/a/1mOXeLdSVEYPn" target="_blank" class="paper-link">
-                        <em>Might India's Use of Groundwater be Weakly Sustainable?</em>
-                    </a>
-                </h3>
-                <p class="authors">with D. Blakeslee, R. Fishman, and E. Zaveri</p>
-                <p class="publication">Journal of Environmental Economics and Management. <em></em> </p>
-    
-                <!-- Arrow button to toggle abstract visibility -->
-                <button class="dropdown-toggle">
-                    <span class="arrow2"></span>
-                </button>
-                <!-- Abstract (hidden initially) -->
-                <div class="abstract">
-                    <p> In many parts of the world, groundwater is being extracted at rates that exceed natural renewal rates, leading many experts to conclude that groundwater irrigation is an unsustainable strategy for rural development. However, since the seminal work of Solow (1974) and others, economists have come to consider sustainability from a broader perspective, which allows for income to be sustained by investing profits from resource depletion in acquired (man-made) capital that can substitute for the resource. In this paper, we examine the extent to which the withdrawals of groundwater for irrigation in India have resulted in household-level investments in physical and human capital. Our empirical strategy compares villages in the same administrative units that overlie aquifers with different water storage capacities and, therefore, endowed with different levels of access to the resource. We find that greater access to the resource results in more irrigation, as expected, as well as higher asset wealth and educational attainment. The results suggest that deeming India’s irrigation strategy as unsustainable purely because of the decline in water tables may be too limited, provided that human capital is used to productively shift income from farm to off-farm sources. </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div style="text-align: center; margin-top: 30px;">
-        <button id="show-sleepy" class="btn">Show Sleepy Research 💤</button>
-    </div>
-
-    <section id="sleepy-research" style="display: none;">
-        <h2 style="font-size: 1.2em; margin-bottom: 0.3em;">Previous Research</h2>
-        <div class="previous-research">
-            <h3 style="margin-bottom: 0.2em; font-size: 1em;">
-                <span style="font-style: normal;">Master 2 Thesis:</span>
-                <span style="font-style: italic; margin-left: 5px;">Electricity Access and Agricultural Productivity in Madagascar</span>
-                <span class="supervision-note">under the supervision of Mathilde Maurel</span>
-              </h3>
-            <p style="margin-top: 0;">This paper estimates the heterogeneous and dynamic effects of first-time electricity access on cropland productivity in Madagascar using satellite data in a staggered difference-in-differences setup, showing that while initial impacts may be negative, long-term benefits arise—particularly in villages located above productive aquifers.</p>
+            <div class="wood"></div>
+          </div>
         </div>
 
-        <div class="previous-research">
-            <h3 style="margin-bottom: 0.2em; font-size: 1em;">
-                <span style="font-style: normal;">Master 1 Thesis:</span>
-                <span style="font-style: italic; margin-left: 5px;">Water Pollution and Infant Health in India</span>
-                <span class="supervision-note">under the supervision of Thomas Vendryes</span>
-              </h3>
-            <p style="margin-top: 0;">This paper examines how water pollution affects child health in India, showing that higher levels of specific pollutants are associated with lower birth weight and poorer growth outcomes, based on a newly constructed water pollution level dataset matched with DHS data.</p>
-        </div>
-    </section>
+        <p class="tagline">PhD Candidate</p>
+      </div>
 
-    <section id="Teaching">
-        <h2>Teaching <span class="assistant-info">Assistant</span> <em class="ens-info">at École Normale Supérieure Paris-Saclay (64h/year)</em></h2>
+      <nav class="site-nav" aria-label="Primary navigation">
         <ul>
-            <li>Econometrics 1, Bachelor.</li>
-            <li>Statistics (0, 1 & 2), Bachelor.</li>
-            <li>Topology, Masters</li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#Teaching">Teaching</a></li>
+          <li>
+            <a href="https://drive.google.com/file/d/10VpbNYFfKolzKGZBAO_QMp8_gS4eQ3a3/view?usp=sharing"
+               target="_blank" rel="noopener">CV</a>
+          </li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text">
+            <h2>Welcome to my website!</h2>
+
+            <p>
+              I am a 3rd year PhD candidate in Economics at
+              <a href="https://ens-paris-saclay.fr/en" target="_blank" rel="noopener">ENS Paris-Saclay</a>
+              and
+              <a href="https://www.agroparistech.fr/" target="_blank" rel="noopener">AgroParisTech</a>,
+              affiliated with the
+              <a href="https://www.ceps-paris-saclay.fr/" target="_blank" rel="noopener">CEPS</a>
+              and
+              <a href="https://www6.versailles-grignon.inrae.fr/psae_eng/" target="_blank" rel="noopener">PSAE</a>
+              labs. I am co-supervised by
+              <a href="https://julienwolfersberger.wordpress.com/" target="_blank" rel="noopener">Julien Wolfersberger</a>
+              and Thomas Vendryes.
+            </p>
+
+            <p>
+              My research interests lie between <strong>environmental</strong> and
+              <strong>development economics</strong>, with a focus on <strong>water</strong>-related issues.
+              I use applied microeconometrics, quasi-experimental methods, and spatial analysis.
+            </p>
+
+            <p class="visit-note">
+                In <em>Spring 2026</em>, I will be visiting
+                <a href="https://tammacarleton.com" target="_blank" rel="noopener">
+                    Tamma Carleton
+                </a>
+                at UC Berkeley as a Fulbright laureate.
+  
+                <span class="contact-line">
+                    Don’t hesitate to 
+                    <a href="mailto:mathilde.degois@ens-paris-saclay.fr">
+                    get in touch
+                    </a>!
+                </span>
+                </p>
+          </div>
+
+          <aside class="profile-side" aria-label="Profile">
+            <div class="profile-photo-wrap">
+              <img src="profile.jpg" alt="Portrait of Mathilde Degois" class="profile-img" />
+            </div>
+
+            <div class="social-icons" aria-label="Social links">
+              <a href="https://x.com/MathildeDegois" target="_blank" rel="noopener" aria-label="X">
+                <img src="logo-black.png" alt="" class="social-icon" />
+              </a>
+              <a href="https://bsky.app/profile/mathildegois.bsky.social" target="_blank" rel="noopener" aria-label="Bluesky">
+                <img src="bluesky.png" alt="" class="social-icon" />
+              </a>
+              <a href="https://www.linkedin.com/in/mathilde-degois" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <img src="linkedin.png" alt="" class="social-icon" />
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
     </section>
-    
-    <section id="contact">
+
+    <!-- RESEARCH -->
+    <section id="research" class="section research">
+      <div class="container">
+        <h2>Research</h2>
+
+        <h3 class="section-subtitle">Publications</h3>
+
+        <article class="paper paper-text">
+          <div class="paper-body">
+            <h4 class="paper-title">
+              <a class="paper-link" href="https://authors.elsevier.com/a/1mOXeLdSVEYPn" target="_blank" rel="noopener">
+                <em>Might India's Use of Groundwater be Weakly Sustainable?</em>
+              </a>
+            </h4>
+
+            <p class="paper-meta">
+              with D. Blakeslee, R. Fishman, and E. Zaveri ·
+              <span class="venue">Journal of Environmental Economics and Management</span>
+            </p>
+
+            <button class="abstract-toggle" type="button" aria-expanded="false">
+              <span class="chev" aria-hidden="true"></span>
+              <span class="toggle-text">Abstract</span>
+            </button>
+
+            <div class="abstract" hidden>
+              <p>
+                In many parts of the world, groundwater is being extracted at rates that exceed natural renewal rates, leading many experts to conclude that groundwater mining is an unsustainable strategy for rural development. However, groundwater extraction could still be considered to be ‘weakly sustainable’ if it generates investments in man-made capital that offset the loss of natural ‘groundwater capital’ and enable income to be sustained even as the resource is depleted. In this paper, we examine whether the withdrawals of groundwater for irrigation in India have resulted in household-level investments in physical and human capital. Our empirical strategy compares villages in the same administrative units that overlie aquifers with different water storage capacities and, therefore, endowed with different levels of access to the resource. We find that greater access to the resource results in more irrigation, as expected, as well as higher asset wealth and educational attainment. The results suggest that deeming India’s irrigation-based rural development as unsustainable purely because of the decline in water tables may require reconsideration, provided that human capital is used to productively shift income from farm to off-farm sources.
+            </p>
+            </div>
+          </div>
+        </article>
+
+        <h3 class="section-subtitle">Working Papers</h3>
+
+        <article class="paper paper-text">
+          <div class="paper-body">
+            <h4 class="paper-title">
+              <em>Does Agricultural Productivity Lead to Capital Accumulation or Re-Location? Evidence from Long-Term Irrigation in India</em>
+            </h4>
+
+            <p class="paper-meta">
+              with D. Blakeslee and R. Fishman
+            </p>
+
+            <p class="paper-meta">
+              <a href="mailto:mathilde.degois@ens-paris-saclay.fr"><em>Available upon request.</em></a>
+            </p>
+          </div>
+        </article>
+
+        <h3 class="section-subtitle">Work in Progress</h3>
+
+        <!-- ✅ Deforestation WIP: abstract spans full width below -->
+        <article class="paper paper-wip">
+          <!-- top row: left text block -->
+          <div class="wip-left">
+            <h4 class="paper-title">
+              <em>Clearing the Way to Conflict: Deforestation, Downwind Rainfall and Violence</em>
+            </h4>
+
+            <p class="paper-meta">
+              with T. Vendryes and J. Wolfersberger
+            </p>
+
+            <button class="abstract-toggle" type="button" aria-expanded="false">
+              <span class="chev" aria-hidden="true"></span>
+              <span class="toggle-text">Abstract</span>
+            </button>
+          </div>
+
+          <!-- top row: right figure (stays same level) -->
+          <figure class="wip-right fade-figure" aria-label="Deforestation figures">
+            <img src="2001.jpg" alt="Forest loss map (2001)" loading="lazy" class="fade-img fade-1" />
+            <img src="total_df.jpg" alt="Total deforestation figure" loading="lazy" class="fade-img fade-2" />
+          </figure>
+
+          <!-- ✅ full width row: abstract spans both columns -->
+          <div class="abstract abstract-full" hidden>
+            <p>
+              Rainfall shocks shape development and conflict outcomes, yet their drivers are often assumed to be exogenous. In this paper, we show that deforestation in West Africa reduces precipitation in downwind areas and causes conflict. Combining satellite forest loss, wind trajectories, precipitation, and conflict events since the 2000s, we construct location-specific exposure to upstream deforestation using prevailing winds and exclude nearby pixels to isolate long-distance spillovers. We find that an increase in upstream deforestation indeed lowers precipitation, with effects extending to 200 km. Turning to development outcomes, we show that exposure to deforestation increases conflict intensity in downwind areas, driven primarily by civil unrest events, with effects persisting for up to six years.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SLEEPY -->
+    <section class="section sleepy">
+      <div class="container center">
+        <button id="show-sleepy" class="btn" type="button">Show Sleepy Research 💤</button>
+      </div>
+
+      <div class="container">
+        <section id="sleepy-research" class="sleepy-research" hidden>
+          <h2 class="sleepy-title">Previous Research</h2>
+
+          <div class="previous-research">
+            <h3 class="previous-title">
+              <span class="label">Master 2 Thesis:</span>
+              <span class="title"><em>Electricity Access and Agricultural Productivity in Madagascar</em></span>
+              <span class="supervision-note">under the supervision of Mathilde Maurel</span>
+            </h3>
+            <p>
+              This paper estimates the heterogeneous and dynamic effects of first-time electricity access on cropland productivity in Madagascar using satellite data in a staggered difference-in-differences setup. I show that while initial impacts may be negative, long-term benefits arise, particularly in villages located above productive aquifers.
+            </p>
+          </div>
+
+          <div class="previous-research">
+            <h3 class="previous-title">
+              <span class="label">Master 1 Thesis:</span>
+              <span class="title"><em>Water Pollution and Infant Health in India</em></span>
+              <span class="supervision-note">under the supervision of Thomas Vendryes</span>
+            </h3>
+            <p>
+              This paper examines how water pollution affects child health in India, showing that higher levels of specific pollutants are associated with lower birth weight and poorer growth outcomes, based on a newly constructed water pollution level dataset matched with DHS data.
+            </p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- TEACHING -->
+    <section id="Teaching" class="section teaching">
+      <div class="container">
+        <h2>Teaching <span class="assistant-info">Assistant</span> <em class="ens-info">at École Normale Supérieure Paris-Saclay (64h/year)</em></h2>
+        <ul class="dash-list">
+          <li>Econometrics 1, Bachelor.</li>
+          <li>Statistics (0, 1 &amp; 2), Bachelor.</li>
+          <li>Topology, Masters.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="container">
         <h2>Contact</h2>
-        <p>mathilde.degois[at]ens-paris-saclay.fr</p>
-    
-        <!-- X logo with handle in the Contact section -->
-        <p>
-            <a href="https://x.com/MathildeDegois" target="_blank" class="twitter-link">
-                <img src="logo-black.png" alt="X logo" class="social-icon">
-                <span>@MathildeDegois</span>
-            </a>
-        </p>
-        <p>
-            <a href="https://bsky.app/profile/mathildegois.bsky.social" target="_blank" class="bluesky-link">
-                <img src="bluesky.png" alt="Bluesky logo" class="social-icon">
-                <span>@mathildedegois.bsky.social</span>
-            </a>
-        </p>
-        <p>
-            <a href="https://www.linkedin.com/in/mathilde-degois" target="_blank" class="linkedin-link">
-                <img src="linkedin.png" alt="LinkedIn logo" class="social-icon">
-                <span>linkedin.com/in/mathilde-degois</span>
-            </a>
-        </p>
+        <p class="contact-email">mathilde.degois[at]ens-paris-saclay.fr</p>
+
+        <div class="contact-links">
+          <a href="https://x.com/MathildeDegois" target="_blank" rel="noopener" class="contact-link">
+            <img src="logo-black.png" alt="" class="social-icon" />
+            <span>@MathildeDegois</span>
+          </a>
+
+          <a href="https://bsky.app/profile/mathildegois.bsky.social" target="_blank" rel="noopener" class="contact-link">
+            <img src="bluesky.png" alt="" class="social-icon" />
+            <span>@mathildedegois.bsky.social</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/mathilde-degois" target="_blank" rel="noopener" class="contact-link">
+            <img src="linkedin.png" alt="" class="social-icon" />
+            <span>linkedin.com/in/mathilde-degois</span>
+          </a>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <p>&copy; 2024 Mathilde Degois. All rights reserved.</p>
-    </footer>
-    
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Mathilde Degois. All rights reserved.</p>
+    </div>
+  </footer>
 
-    /* ===========================
-       1. TREE ANIMATION
-       =========================== */
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const header = document.getElementById("site-header");
+    const tree = document.getElementById("tree");
+    const themeBtn = document.getElementById("theme-toggle");
+    const leaves = tree ? tree.querySelectorAll(".leaf") : [];
 
-    const tree = document.querySelector('.tree');
-    const leaves = document.querySelectorAll('.leaf');
+    let lastScrolled = null;
+    let lastAtTop = null;
 
-    if (tree) {
-        tree.classList.add('animate-on-load');
+    function triggerTreeAnimation() {
+      if (!tree) return;
 
-        setTimeout(() => {
-            leaves.forEach((leaf, i) => {
-                setTimeout(() => {
-                    leaf.style.transform = 'scale(1)';
-                }, i * 200);
-            });
+      tree.classList.remove("animate-on-load", "berries-visible");
+      leaves.forEach((leaf) => { leaf.style.transform = "scale(0)"; });
+      void tree.offsetWidth;
 
-            const totalDuration = leaves.length * 200 + 500;
-            setTimeout(() => {
-                tree.classList.add('berries-visible');
-            }, totalDuration);
-        }, 1000);
+      tree.classList.add("animate-on-load");
+      setTimeout(() => {
+        leaves.forEach((leaf, i) => {
+          setTimeout(() => { leaf.style.transform = "scale(1)"; }, i * 160);
+        });
+        setTimeout(() => tree.classList.add("berries-visible"), leaves.length * 160 + 260);
+      }, 80);
     }
 
-    if (tree) {
-        tree.addEventListener('mouseenter', () => {
-            tree.classList.remove('grow-on-hover');
-            void tree.offsetWidth; // force reflow
-            tree.classList.add('grow-on-hover');
-        });
+    triggerTreeAnimation();
+    if (tree) tree.addEventListener("mouseenter", triggerTreeAnimation);
+
+    function onScroll() {
+      const y = window.scrollY || 0;
+      const scrolled = y > 30;
+      const atTop = y === 0;
+
+      if (scrolled !== lastScrolled) {
+        header.classList.toggle("is-scrolled", scrolled);
+        lastScrolled = scrolled;
+      }
+
+      if (atTop !== lastAtTop) {
+        if (atTop) triggerTreeAnimation();
+        lastAtTop = atTop;
+      }
     }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
 
+    // Abstract toggles (works for normal papers AND for deforestation full-width abstract)
+    document.querySelectorAll(".abstract-toggle").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const paper = btn.closest(".paper");
+        const abs = paper ? paper.querySelector(".abstract") : null;
+        if (!paper || !abs) return;
 
-
-    /* ===========================
-       2. SLIDESHOW HELPER
-       =========================== */
-
-    function changeSlide(slideIndex) {
-        const slides = document.querySelectorAll('.slide');
-        slides.forEach((slide, index) => {
-            slide.classList.remove('active');
-            if (index === slideIndex) {
-                slide.classList.add('active');
-            }
-        });
-    }
-
-    window.changeSlide = changeSlide; // only if you need it globally
-
-
-
-    /* ===========================================
-       3. DROPDOWN TOGGLES FOR ABSTRACTS + ARROWS
-       =========================================== */
-
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function () {
-            const parentItem = toggle.closest('.research-item, .research-item2');
-            if (!parentItem) return;
-
-            const abstract = parentItem.querySelector('.abstract');
-            const arrow = parentItem.querySelector('.arrow2');
-
-            const isOpen = parentItem.classList.contains('open');
-
-            if (isOpen) {
-                parentItem.classList.remove('open');
-                if (abstract) {
-                    abstract.style.visibility = 'hidden';
-                    abstract.style.opacity = '0';
-                }
-                if (arrow) {
-                    arrow.classList.remove('open');
-                }
-            } else {
-                parentItem.classList.add('open');
-                if (abstract) {
-                    abstract.style.visibility = 'visible';
-                    abstract.style.opacity = '1';
-                }
-                if (arrow) {
-                    arrow.classList.add('open');
-                }
-            }
-        });
+        const willOpen = abs.hasAttribute("hidden");
+        if (willOpen) {
+          abs.removeAttribute("hidden");
+          btn.setAttribute("aria-expanded", "true");
+          paper.classList.add("open");
+        } else {
+          abs.setAttribute("hidden", "");
+          btn.setAttribute("aria-expanded", "false");
+          paper.classList.remove("open");
+        }
+      });
     });
 
-
-
-    /* ==================================
-       4. "SLEEPY RESEARCH" SHOW / HIDE
-       ================================== */
-
-    const sleepyButton = document.getElementById('show-sleepy');
-    const sleepySection = document.getElementById('sleepy-research');
-
+    // Sleepy research
+    const sleepyButton = document.getElementById("show-sleepy");
+    const sleepySection = document.getElementById("sleepy-research");
     if (sleepyButton && sleepySection) {
-        sleepyButton.addEventListener('click', function () {
-            const isHidden =
-                sleepySection.style.display === 'none' ||
-                sleepySection.style.display === '';
-
-            if (isHidden) {
-                sleepySection.style.display = 'block';
-                sleepyButton.textContent = 'Hide Sleepy Research 🐑';
-            } else {
-                sleepySection.style.display = 'none';
-                sleepyButton.textContent = 'Show Sleepy Research 💤';
-            }
-        });
-    }
-
-
-
-    /* ==========================
-       5. 🌑 DARK MODE TOGGLE
-       ========================== */
-
-    const themeToggleBtn = document.getElementById('theme-toggle');
-
-    function updateDarkModeLabel(isDark) {
-        if (!themeToggleBtn) return;
-        if (isDark) {
-            themeToggleBtn.innerHTML = '☀️ Light';
-            themeToggleBtn.setAttribute('aria-pressed', 'true');
+      sleepyButton.addEventListener("click", () => {
+        const hidden = sleepySection.hasAttribute("hidden");
+        if (hidden) {
+          sleepySection.removeAttribute("hidden");
+          sleepyButton.textContent = "Hide Sleepy Research 🐑";
         } else {
-            themeToggleBtn.innerHTML = '🌙 Night';
-            themeToggleBtn.setAttribute('aria-pressed', 'false');
+          sleepySection.setAttribute("hidden", "");
+          sleepyButton.textContent = "Show Sleepy Research 💤";
         }
+      });
     }
 
-    // Load stored theme from localStorage
-    const savedTheme = localStorage.getItem('theme');
-    const startDark = savedTheme === 'dark';
+    // Theme (icon only)
+    function setTheme(mode) {
+      const isDark = mode === "dark";
+      document.body.classList.toggle("dark-mode", isDark);
+      localStorage.setItem("theme", mode);
 
-    if (startDark) {
-        document.body.classList.add('dark-mode');
-        updateDarkModeLabel(true);
-    } else {
-        document.body.classList.remove('dark-mode');
-        updateDarkModeLabel(false);
+      if (themeBtn) {
+        themeBtn.textContent = isDark ? "☀️" : "🌙";
+        themeBtn.setAttribute("aria-pressed", String(isDark));
+      }
     }
 
-    // Toggle on click
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', function () {
-            const turningDark = !document.body.classList.contains('dark-mode');
+    const saved = localStorage.getItem("theme");
+    setTheme(saved === "dark" ? "dark" : "light");
 
-            if (turningDark) {
-                document.body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.body.classList.remove('dark-mode');
-                localStorage.setItem('theme', 'light');
-            }
-
-            updateDarkModeLabel(turningDark);
-        });
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        const turningDark = !document.body.classList.contains("dark-mode");
+        setTheme(turningDark ? "dark" : "light");
+      });
     }
-});
-</script>
-    </body>
-    </html>
+  });
+  </script>
+</body>
+</html>

@@ -1,129 +1,111 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* ===========================
-       1. OPTIONAL: Slideshow helper
-       =========================== */
-
-    function changeSlide(slideIndex) {
-        const slides = document.querySelectorAll('.slide');
-        slides.forEach((slide, index) => {
-            slide.classList.remove('active');
-            if (index === slideIndex) {
-                slide.classList.add('active');
-            }
-        });
-    }
-
-    window.changeSlide = changeSlide; // expose if needed
-
-
-
-    /* ===========================================
-       2. Dropdown toggles for abstracts + arrows
-       =========================================== */
-
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function () {
-            const parentItem = toggle.closest('.research-item, .research-item2');
-            if (!parentItem) return;
-
-            const abstract = parentItem.querySelector('.abstract');
-            const arrow = parentItem.querySelector('.arrow2');
-
-            const isOpen = parentItem.classList.contains('open');
-
-            if (isOpen) {
-                parentItem.classList.remove('open');
-                if (abstract) {
-                    abstract.style.visibility = 'hidden';
-                    abstract.style.opacity = '0';
-                }
-                if (arrow) {
-                    arrow.classList.remove('open');
-                }
-            } else {
-                parentItem.classList.add('open');
-                if (abstract) {
-                    abstract.style.visibility = 'visible';
-                    abstract.style.opacity = '1';
-                }
-                if (arrow) {
-                    arrow.classList.add('open');
-                }
-            }
-        });
+  /* ===========================
+     1) OPTIONAL: Slideshow helper
+     =========================== */
+  function changeSlide(slideIndex) {
+    const slides = document.querySelectorAll('.slide');
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === slideIndex);
     });
+  }
+  window.changeSlide = changeSlide;
 
 
+  /* ===========================================
+     2) Abstract toggles (NEW HTML: .abstract-toggle)
+     =========================================== */
+  const abstractToggles = document.querySelectorAll('.abstract-toggle');
 
-    /* ==================================
-       3. "Sleepy research" show / hide
-       ================================== */
+  abstractToggles.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const paper = btn.closest('.paper');
+      if (!paper) return;
 
-    const sleepyButton = document.getElementById('show-sleepy');
-    const sleepySection = document.getElementById('sleepy-research');
+      const abstract = paper.querySelector('.abstract');
+      if (!abstract) return;
 
-    if (sleepyButton && sleepySection) {
-        sleepyButton.addEventListener('click', function () {
-            const isHidden = sleepySection.style.display === 'none' || sleepySection.style.display === '';
-            if (isHidden) {
-                sleepySection.style.display = 'block';
-                sleepyButton.textContent = 'Hide Sleepy Research 🐑';
-            } else {
-                sleepySection.style.display = 'none';
-                sleepyButton.textContent = 'Show Sleepy Research 💤';
-            }
-        });
-    }
+      const isHidden = abstract.hasAttribute('hidden');
+
+      if (isHidden) {
+        abstract.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        paper.classList.add('open');
+      } else {
+        abstract.setAttribute('hidden', '');
+        btn.setAttribute('aria-expanded', 'false');
+        paper.classList.remove('open');
+      }
+    });
+  });
 
 
+  /* ==================================
+     3) "Sleepy research" show / hide
+     (NEW HTML uses hidden attribute)
+     ================================== */
+  const sleepyButton = document.getElementById('show-sleepy');
+  const sleepySection = document.getElementById('sleepy-research');
 
-    /* ==========================
-       4. 🌑 DARK MODE TOGGLE
-       ========================== */
+  if (sleepyButton && sleepySection) {
+    sleepyButton.addEventListener('click', function () {
+      const isHidden = sleepySection.hasAttribute('hidden');
 
-    const themeToggleBtn = document.getElementById('theme-toggle');
+      if (isHidden) {
+        sleepySection.removeAttribute('hidden');
+        sleepyButton.textContent = 'Hide Sleepy Research 🐑';
+      } else {
+        sleepySection.setAttribute('hidden', '');
+        sleepyButton.textContent = 'Show Sleepy Research 💤';
+      }
+    });
+  }
 
-    function updateDarkModeLabel(isDark) {
-        if (!themeToggleBtn) return;
-        if (isDark) {
-            themeToggleBtn.innerHTML = '☀️ Light Mode';
-            themeToggleBtn.setAttribute('aria-pressed', 'true');
-        } else {
-            themeToggleBtn.innerHTML = '🌙 Night';
-            themeToggleBtn.setAttribute('aria-pressed', 'false');
-        }
-    }
 
-    // Load stored theme
-    const savedTheme = localStorage.getItem('theme');
+  /* ==========================
+     4) 🌑 DARK MODE TOGGLE
+     ========================== */
+  const themeToggleBtn = document.getElementById('theme-toggle');
 
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        updateDarkModeLabel(true);
+  function updateDarkModeLabel(isDark) {
+    if (!themeToggleBtn) return;
+    if (isDark) {
+      themeToggleBtn.innerHTML = '☀️ Light';
+      themeToggleBtn.setAttribute('aria-pressed', 'true');
     } else {
+      themeToggleBtn.innerHTML = '🌙 Night';
+      themeToggleBtn.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  // Load stored theme
+  const savedTheme = localStorage.getItem('theme');
+  const startDark = savedTheme === 'dark';
+
+  if (startDark) {
+    document.body.classList.add('dark-mode');
+    updateDarkModeLabel(true);
+  } else {
+    document.body.classList.remove('dark-mode');
+    updateDarkModeLabel(false);
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', function () {
+      const turningDark = !document.body.classList.contains('dark-mode');
+
+      if (turningDark) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+      } else {
         document.body.classList.remove('dark-mode');
-        updateDarkModeLabel(false);
-    }
+        localStorage.setItem('theme', 'light');
+      }
 
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', function () {
-            const turningDark = !document.body.classList.contains('dark-mode');
-
-            if (turningDark) {
-                document.body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.body.classList.remove('dark-mode');
-                localStorage.setItem('theme', 'light');
-            }
-
-            updateDarkModeLabel(turningDark);
-        });
-    }
+      updateDarkModeLabel(turningDark);
+    });
+  }
 
 });
 </script>
