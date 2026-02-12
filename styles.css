@@ -153,6 +153,11 @@ body{
   align-items: start;
 }
 
+/* ✅ justify intro text on desktop too */
+.about-text{
+  text-align: justify;
+}
+
 .about h2{
   font-size: 1.5rem;
   margin-bottom: 10px;
@@ -172,12 +177,20 @@ body{
   font-weight: 700;
 }
 
+/* visiting “box” */
 .visit-note{
   margin-top: 14px;
   padding: 10px 12px;
   border-radius: var(--radius);
   background: rgba(42,101,183,0.06);
   border: 1px solid rgba(42,101,183,0.14);
+  text-align: justify;  /* ✅ also justified */
+}
+
+/* Optional: second line inside visit-note forced below, if you use .contact-line span */
+.visit-note .contact-line{
+  display: block;
+  margin-top: 4px;
 }
 
 /* PROFILE */
@@ -296,17 +309,18 @@ body{
 }
 .paper.open .chev{ transform: rotate(180deg); }
 
-/* Default abstract style */
+/* ✅ Abstract text justified everywhere (desktop + mobile) */
 .abstract{
   margin-top: 10px;
   color: rgba(31,41,55,0.85);
   font-size: 0.95rem;
+  text-align: justify;
 }
 
-/* ✅ Deforestation WIP: 2-column top row + full-width abstract row */
+/* Deforestation WIP: 2-column top row + full-width abstract below */
 .paper-wip{
   display: grid;
-  grid-template-columns: 1fr 1.7fr;  /* same as before */
+  grid-template-columns: 1fr 1.7fr;
   grid-template-rows: auto auto;
   gap: var(--gap);
   align-items: center;
@@ -320,12 +334,7 @@ body{
   grid-column: 1 / -1;
   margin-top: 0;
   padding-top: 6px;
-  border-top: none;
-}
-
-.visit-note .contact-line{
-  display: block;     /* force new line */
-  margin-top: 4px;    /* petit espace propre */
+  border-top: none !important; /* ✅ ensure no grey line */
 }
 
 /* Figure: no box */
@@ -417,6 +426,7 @@ body{
 .previous-research p{
   margin-top: 8px;
   color: rgba(31,41,55,0.85);
+  text-align: justify; /* ✅ justify descriptions */
 }
 
 /* ================================
@@ -611,7 +621,7 @@ body.dark-mode a:hover{
 }
 
 body.dark-mode .section-subtitle{
-  color: #f3f4f6;
+  color: rgba(243,244,246,0.96);
   text-shadow: 0 1px 0 rgba(0,0,0,0.35);
 }
 
@@ -636,74 +646,51 @@ body.dark-mode .chev{
   border-top-color: rgba(229,231,235,0.75);
 }
 
+/* Readability for meta + venue + abstracts + descriptions */
+body.dark-mode .paper-meta{
+  color: rgba(229,231,235,0.84);
+}
+body.dark-mode .venue{
+  color: rgba(229,231,235,0.92);
+}
+body.dark-mode .abstract{
+  color: rgba(229,231,235,0.90);
+}
+body.dark-mode .paper p,
+body.dark-mode .previous-research p,
+body.dark-mode .sleepy-research p{
+  color: rgba(229,231,235,0.88);
+}
+body.dark-mode .supervision-note{
+  color: rgba(229,231,235,0.75);
+}
+
+/* Make black X icon visible */
 body.dark-mode img[src*="logo-black"]{
   filter: invert(1) brightness(1.15);
 }
 
 /* ================================
-   DARK MODE — TEXT READABILITY FIX
-   ================================ */
-
-/* Titles & general text already OK, but meta + abstract were too low-contrast */
-body.dark-mode .paper-meta{
-  color: rgba(229,231,235,0.82);   /* ✅ brighter */
-}
-
-body.dark-mode .venue{
-  color: rgba(229,231,235,0.90);   /* ✅ journal/venue readable */
-}
-
-/* Abstract text (both normal and full-width) */
-body.dark-mode .abstract{
-  color: rgba(229,231,235,0.90);   /* ✅ readable abstract text */
-}
-
-/* Keep the small “Abstract” toggle readable too */
-body.dark-mode .abstract-toggle{
-  color: rgba(229,231,235,0.92);
-}
-
-/* Optional: slightly brighten section subtitles (Publications / Working Papers / WIP) */
-body.dark-mode .section-subtitle{
-  color: rgba(243,244,246,0.96);
-}
-
-/* ================================
-   DARK MODE — RESEARCH DESCRIPTION READABILITY
-   ================================ */
-
-/* Descriptions inside research cards (incl. Previous Research text) */
-body.dark-mode .paper p,
-body.dark-mode .previous-research p,
-body.dark-mode .sleepy-research p{
-  color: rgba(229, 231, 235, 0.88);
-}
-
-/* Slightly lighter meta so it’s readable but still secondary */
-body.dark-mode .paper-meta{
-  color: rgba(229, 231, 235, 0.84);
-}
-
-/* If you ever have plain text under research (outside cards) */
-body.dark-mode #research p{
-  color: rgba(229, 231, 235, 0.88);
-}
-
-/* ================================
-   RESPONSIVE
+   RESPONSIVE (MOBILE)
    ================================ */
 @media (max-width: 860px){
   .about-grid{
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 18px;
   }
 
+  /* ✅ Photo first on mobile */
   .profile-side{
+    order: -1;
     justify-self: center;
     margin-right: 0;
   }
 
-  /* ✅ WIP becomes stacked on mobile */
+  /* Keep about text justified (already) */
+  .about-text{ text-align: justify; }
+  .visit-note{ text-align: justify; }
+
+  /* WIP becomes stacked on mobile */
   .paper-wip{
     grid-template-columns: 1fr;
   }
@@ -711,13 +698,26 @@ body.dark-mode #research p{
   .wip-right{ grid-column: 1; }
 
   .fade-figure{ height: 210px; margin-top: 10px; }
-  .abstract-full{
-    grid-column: 1;
-  }
+  .abstract-full{ grid-column: 1; }
 }
 
 @media (max-width: 520px){
   .name{ font-size: 1.9rem; }
   .paper{ padding: 12px 14px; }
   .profile-img{ width: 175px; height: 175px; }
+}
+
+/* ==================================
+   MOBILE — Hide theme icon on scroll
+   ================================== */
+
+@media (max-width: 860px){
+
+  body.hide-theme .theme-toggle-fab{
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
 }

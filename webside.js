@@ -2,110 +2,166 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ===========================
-     1) OPTIONAL: Slideshow helper
+     1) ELEMENTS
      =========================== */
-  function changeSlide(slideIndex) {
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach((slide, index) => {
-      slide.classList.toggle('active', index === slideIndex);
-    });
+  const header = document.getElementById("site-header");
+  const tree = document.getElementById("tree");
+  const themeBtn = document.getElementById("theme-toggle");
+
+  const sleepyButton = document.getElementById("show-sleepy");
+  const sleepySection = document.getElementById("sleepy-research");
+
+  /* ===========================
+     2) TREE ANIMATION (on load, on hover, when back to top)
+     =========================== */
+  const leaves = tree ? tree.querySelectorAll(".leaf") : [];
+
+  function triggerTreeAnimation() {
+    if (!tree) return;
+
+    // reset
+    tree.classList.remove("animate-on-load", "berries-visible");
+    leaves.forEach((leaf) => { leaf.style.transform = "scale(0)"; });
+
+    // force reflow
+    void tree.offsetWidth;
+
+    // replay
+    tree.classList.add("animate-on-load");
+
+    setTimeout(() => {
+      leaves.forEach((leaf, i) => {
+        setTimeout(() => { leaf.style.transform = "scale(1)"; }, i * 160);
+      });
+      setTimeout(() => tree.classList.add("berries-visible"), leaves.length * 160 + 260);
+    }, 80);
   }
-  window.changeSlide = changeSlide;
 
+  triggerTreeAnimation();
+  if (tree) tree.addEventListener("mouseenter", triggerTreeAnimation);
 
-  /* ===========================================
-     2) Abstract toggles (NEW HTML: .abstract-toggle)
-     =========================================== */
-  const abstractToggles = document.querySelectorAll('.abstract-toggle');
+  /* ===========================
+     3) HEADER BEHAVIOR ON SCROLL
+        - on scroll down: keep only menu
+        - back to top: show full header + replay tree
+     =========================== */
+  let lastScrolledState = null;
+  let lastAtTopState = null;
 
-  abstractToggles.forEach(btn => {
-    btn.addEventListener('click', function () {
-      const paper = btn.closest('.paper');
+  function updateHeaderOnScroll() {
+    const y = window.scrollY || 0;
+    const scrolled = y > 30;
+    const atTop = y === 0;
+
+    if (header && scrolled !== lastScrolledState) {
+      header.classList.toggle("is-scrolled", scrolled);
+      lastScrolledState = scrolled;
+    }
+
+    if (atTop !== lastAtTopState) {
+      if (atTop) triggerTreeAnimation();
+      lastAtTopState = atTop;
+    }
+  }
+
+  /* ===========================
+     4) MOBILE ONLY: HIDE THEME ICON ON SCROLL
+     =========================== */
+  function updateThemeVisibilityMobile() {
+    const isMobile = window.innerWidth <= 860;
+    const scrolled = (window.scrollY || 0) > 30;
+
+    // only on mobile + only when scrolled
+    if (isMobile && scrolled) {
+      document.body.classList.add("hide-theme");
+    } else {
+      document.body.classList.remove("hide-theme");
+    }
+  }
+
+  /* ===========================
+     5) ABSTRACT TOGGLES
+        Works for normal abstracts and the deforestation full-width abstract
+     =========================== */
+  document.querySelectorAll(".abstract-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const paper = btn.closest(".paper");
       if (!paper) return;
 
-      const abstract = paper.querySelector('.abstract');
-      if (!abstract) return;
+      // prefer the full-width abstract if it exists; else normal
+      const abs = paper.querySelector(".abstract");
+      if (!abs) return;
 
-      const isHidden = abstract.hasAttribute('hidden');
+      const willOpen = abs.hasAttribute("hidden");
 
-      if (isHidden) {
-        abstract.removeAttribute('hidden');
-        btn.setAttribute('aria-expanded', 'true');
-        paper.classList.add('open');
+      if (willOpen) {
+        abs.removeAttribute("hidden");
+        btn.setAttribute("aria-expanded", "true");
+        paper.classList.add("open");
       } else {
-        abstract.setAttribute('hidden', '');
-        btn.setAttribute('aria-expanded', 'false');
-        paper.classList.remove('open');
+        abs.setAttribute("hidden", "");
+        btn.setAttribute("aria-expanded", "false");
+        paper.classList.remove("open");
       }
     });
   });
 
-
-  /* ==================================
-     3) "Sleepy research" show / hide
-     (NEW HTML uses hidden attribute)
-     ================================== */
-  const sleepyButton = document.getElementById('show-sleepy');
-  const sleepySection = document.getElementById('sleepy-research');
-
+  /* ===========================
+     6) SLEEPY RESEARCH TOGGLE
+     =========================== */
   if (sleepyButton && sleepySection) {
-    sleepyButton.addEventListener('click', function () {
-      const isHidden = sleepySection.hasAttribute('hidden');
-
-      if (isHidden) {
-        sleepySection.removeAttribute('hidden');
-        sleepyButton.textContent = 'Hide Sleepy Research 🐑';
+    sleepyButton.addEventListener("click", () => {
+      const hidden = sleepySection.hasAttribute("hidden");
+      if (hidden) {
+        sleepySection.removeAttribute("hidden");
+        sleepyButton.textContent = "Hide Sleepy Research 🐑";
       } else {
-        sleepySection.setAttribute('hidden', '');
-        sleepyButton.textContent = 'Show Sleepy Research 💤';
+        sleepySection.setAttribute("hidden", "");
+        sleepyButton.textContent = "Show Sleepy Research 💤";
       }
     });
   }
 
+  /* ===========================
+     7) THEME (DARK/LIGHT) — ICON ONLY
+     =========================== */
+  function applyTheme(mode) {
+    const isDark = mode === "dark";
+    document.body.classList.toggle("dark-mode", isDark);
+    localStorage.setItem("theme", mode);
 
-  /* ==========================
-     4) 🌑 DARK MODE TOGGLE
-     ========================== */
-  const themeToggleBtn = document.getElementById('theme-toggle');
-
-  function updateDarkModeLabel(isDark) {
-    if (!themeToggleBtn) return;
-    if (isDark) {
-      themeToggleBtn.innerHTML = '☀️ Light';
-      themeToggleBtn.setAttribute('aria-pressed', 'true');
-    } else {
-      themeToggleBtn.innerHTML = '🌙 Night';
-      themeToggleBtn.setAttribute('aria-pressed', 'false');
+    if (themeBtn) {
+      themeBtn.textContent = isDark ? "☀️" : "🌙";
+      themeBtn.setAttribute("aria-pressed", String(isDark));
     }
   }
 
-  // Load stored theme
-  const savedTheme = localStorage.getItem('theme');
-  const startDark = savedTheme === 'dark';
+  const savedTheme = localStorage.getItem("theme");
+  applyTheme(savedTheme === "dark" ? "dark" : "light");
 
-  if (startDark) {
-    document.body.classList.add('dark-mode');
-    updateDarkModeLabel(true);
-  } else {
-    document.body.classList.remove('dark-mode');
-    updateDarkModeLabel(false);
-  }
-
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', function () {
-      const turningDark = !document.body.classList.contains('dark-mode');
-
-      if (turningDark) {
-        document.body.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.body.classList.remove('dark-mode');
-        localStorage.setItem('theme', 'light');
-      }
-
-      updateDarkModeLabel(turningDark);
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      const turningDark = !document.body.classList.contains("dark-mode");
+      applyTheme(turningDark ? "dark" : "light");
     });
   }
 
+  /* ===========================
+     8) SCROLL/RESIZE LISTENERS
+     =========================== */
+  function onScroll() {
+    updateHeaderOnScroll();
+    updateThemeVisibilityMobile();
+  }
+
+  function onResize() {
+    updateThemeVisibilityMobile();
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onResize);
+
+  // initial state
+  onScroll();
 });
 </script>
