@@ -165,16 +165,58 @@ body{
 
 .about p{ margin-top: 10px; }
 
-.about a{
-  color: var(--link);
-  text-decoration: underline;
-  text-decoration-color: rgba(31,79,163,0.35);
+/* whole intro (consultant line, PhD line, research interests) matches
+   the visit-note's slightly smaller size */
+.two-line-para{
+  font-size: 0.95rem;
 }
-.about a:hover{ text-decoration-color: rgba(31,79,163,0.9); }
+
+
+/* labs / co-supervisors: dark grey instead of underlined */
+.about a{
+  color: rgba(31,41,55,0.85);
+  text-decoration: none;
+}
+.about a:hover{
+  color: rgba(31,41,55,1);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
 
 .about strong{
   color: var(--accent);
   font-weight: 700;
+}
+
+/* names inside links stay the link's grey, just bold */
+.about a strong{
+  color: inherit;
+}
+
+/* job market “box” — sits above the photo, hugs its own text */
+.jm-note{
+  display: inline-block;
+  max-width: 100%;
+  margin-top: 0;
+  margin-bottom: 22px;
+  padding: 7px 12px;
+  border-radius: var(--radius);
+  background: rgba(42,101,183,0.10);
+  border: 1px solid rgba(42,101,183,0.28);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+/* keep the job-market emphasis black/dark, not the intro's accent blue */
+.jm-note strong{
+  color: var(--text);
+  font-weight: 700;
+}
+
+body.dark-mode .jm-note{
+  background: rgba(147,197,253,0.10);
+  border-color: rgba(147,197,253,0.30);
 }
 
 /* visiting “box” */
@@ -185,6 +227,7 @@ body{
   background: rgba(42,101,183,0.06);
   border: 1px solid rgba(42,101,183,0.14);
   text-align: justify;  /* ✅ also justified */
+  font-size: 0.95rem;
 }
 
 /* Optional: second line inside visit-note forced below, if you use .contact-line span */
@@ -281,33 +324,45 @@ body{
   font-size: 0.95rem;
   margin-top: 4px;
 }
+
+/* coauthor links: dark grey instead of underlined */
+.paper-meta a{
+  color: rgba(31,41,55,0.85);
+  text-decoration: none;
+}
+.paper-meta a:hover{
+  color: rgba(31,41,55,1);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
 .venue{ color: rgba(31,41,55,0.75); }
 
-/* Abstract toggle */
+/* Abstract toggle — sits inline, right of the paper title */
 .abstract-toggle{
-  margin-top: 10px;
+  margin: 0 0 0 10px;
   background: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
 
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline;
 
-  color: inherit;
-  font-size: 0.95rem;
+  color: var(--muted);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.88rem;
+  font-family: inherit;
+  white-space: nowrap;
 }
 
-.chev{
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid rgba(31,41,55,0.85);
-  transition: transform 0.2s ease;
+.abstract-toggle:hover{
+  text-decoration: underline;
+  text-decoration-color: rgba(107,114,128,0.6);
 }
-.paper.open .chev{ transform: rotate(180deg); }
+
+body.dark-mode .abstract-toggle{
+  color: var(--muted);
+}
 
 /* ✅ Abstract text justified everywhere (desktop + mobile) */
 .abstract{
@@ -317,31 +372,336 @@ body{
   text-align: justify;
 }
 
-/* Deforestation WIP: 2-column top row + full-width abstract below */
-.paper-wip{
-  display: grid;
-  grid-template-columns: 1fr 1.7fr;
-  grid-template-rows: auto auto;
-  gap: var(--gap);
+/* “Presented at” lists */
+.presented-label{
+  display: inline;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(31,41,55,0.8);
+}
+
+/* wrapper keeping label + list on one flowing block */
+.presented{
+  margin-top: 10px;
+  font-size: 0.88rem;
+}
+
+/* sits under a paper card rather than inside it */
+.presented-outside{
+  margin-top: 8px;
+  padding: 0 4px;
+}
+
+.presented-list{
+  list-style: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  line-height: 1.55;
+}
+
+.presented-list li{
+  display: inline;
+  font-size: 0.88rem;
+  color: rgba(31,41,55,0.8);
+}
+
+.presented-list li:not(:last-child)::after{
+  content: " · ";
+  color: var(--muted);
+}
+
+/* marks a talk that has not happened yet */
+.upcoming{
+  font-size: 0.85em;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+/* year markers separating cohorts of talks */
+.presented-list li.presented-year{
+  font-weight: 700;
+}
+.presented-list li.presented-year::after{
+  content: " — ";
+}
+
+/* everything in the “presented at” block stays grey, links included */
+.presented,
+.presented-label,
+.presented-list li,
+.presented-list a{
+  color: var(--muted);
+}
+
+.presented-list a{
+  text-decoration: none;
+  font-weight: 600;
+}
+.presented-list a:hover{
+  color: var(--muted);
+  text-decoration: none;
+}
+
+body.dark-mode .presented,
+body.dark-mode .presented-label,
+body.dark-mode .presented-list li,
+body.dark-mode .presented-list a{
+  color: var(--muted);
+}
+body.dark-mode .presented-list a:hover{
+  color: var(--muted);
+}
+
+/* Upcoming Talks list */
+.talks-list{
+  list-style: none;
+  margin: 6px 0 16px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.talks-list li{
+  font-size: 0.95rem;
+  color: var(--text);
+  padding: 2px 0;
+}
+
+.talks-list a{
+  color: var(--link);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.talks-list a:hover{
+  text-decoration: underline;
+}
+
+body.dark-mode .talks-list li{
+  color: rgba(229,231,235,0.90);
+}
+
+/* Job Market Paper highlighted box */
+.paper-jmp{
+  padding: 20px 24px;
+  border: 2px solid rgba(42, 101, 183, 0.25);
+  background: var(--panel);
+  box-shadow: 0 10px 28px rgba(42, 101, 183, 0.10);
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+  transition: outline-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.paper-jmp:hover{
+  outline-color: rgba(42, 101, 183, 0.45);
+  box-shadow: 0 16px 38px rgba(42, 101, 183, 0.18);
+  transform: translateY(-3px);
+}
+
+.jmp-title{
+  font-size: 1.12rem;
+  margin-bottom: 4px;
+}
+
+.jmp-label{
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+/* keeps its italics inside the already-italic label */
+.jmp-soon{
+  font-style: italic;
+}
+
+.jmp-abstract{
+  font-size: 0.95rem;
+  color: rgba(31,41,55,0.85);
+  text-align: justify;
+  line-height: 1.65;
+}
+
+/* Interactive wind direction hint */
+.wind-hint{
+  position: relative;
+  display: inline;
+  border-bottom: 1.5px dashed var(--accent);
+  color: var(--accent);
+  cursor: default;
+}
+
+.wind-popup{
+  position: absolute;
+  bottom: calc(100% + 12px);
+  top: auto;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  width: 580px;
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.22);
+  overflow: hidden;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  line-height: 0;
+}
+
+/* Climate hints (wind direction, precipitation): classic hover popup */
+.wind-hint:not(.wind-hint-panel):hover .wind-popup{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Agricultural-result hints: popup only shows via JS-driven classes
+   (not :hover), so it can stay open while the mouse is over the popup
+   itself, and animate away on mouseleave instead of just vanishing. */
+.wind-hint-panel .wind-popup{
+  width: 420px;
+}
+.wind-hint-panel .wind-popup.wind-popup-visible{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.wind-hint-panel .wind-popup.wind-popup-big{
+  width: 560px;
+}
+
+@media (max-width: 900px){
+  .wind-hint-panel .wind-popup.wind-popup-big{ width: min(90vw, 420px); }
+}
+
+/* Ghost image flying from the popup to the results panel */
+.wind-suction-ghost{
+  position: fixed;
+  z-index: 300;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  pointer-events: none;
+  object-fit: cover;
+  transition: left 0.5s cubic-bezier(.4,0,.2,1),
+              top 0.5s cubic-bezier(.4,0,.2,1),
+              width 0.5s cubic-bezier(.4,0,.2,1),
+              height 0.5s cubic-bezier(.4,0,.2,1),
+              opacity 0.5s ease-in 0.15s;
+}
+
+.wind-preview{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+body.dark-mode .wind-preview{
+  box-shadow: 0 12px 32px rgba(0,0,0,0.55);
+}
+
+/* ================================
+   RESULTS PANEL — figures pinned while reading the JMP abstract
+   ================================ */
+.results-panel{
+  position: fixed;
+  top: 64px;
+  right: 14px;
+  z-index: 150;
+  width: 220px;
+  max-height: calc(100vh - 84px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.result-card{
+  position: relative;
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  line-height: 0;
+}
+
+.result-card img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.result-card-close{
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(2,6,23,0.55);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
   align-items: center;
+  justify-content: center;
+}
+.result-card-close:hover{ background: rgba(2,6,23,0.8); }
+
+@media (max-width: 860px){
+  .results-panel{
+    position: static;
+    width: auto;
+    max-height: none;
+    margin: 14px 0 0;
+    padding: 0 0 4px;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+  .result-card{
+    flex: 0 0 auto;
+    width: 140px;
+  }
 }
 
-.wip-left{ grid-column: 1; }
-.wip-right{ grid-column: 2; }
-
-/* full-width abstract row under both columns */
-.abstract-full{
-  grid-column: 1 / -1;
-  margin-top: 0;
-  padding-top: 6px;
-  border-top: none !important; /* ✅ ensure no grey line */
+body.dark-mode .paper-jmp{
+  border-color: rgba(147, 197, 253, 0.25);
+  background:
+    radial-gradient(circle at top left, rgba(30,41,59,0.95) 0, rgba(2,6,23,0.92) 70%);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.40);
 }
 
-/* Figure: no box */
+body.dark-mode .paper-jmp:hover{
+  outline-color: rgba(147, 197, 253, 0.50);
+  box-shadow: 0 16px 38px rgba(0,0,0,0.55);
+}
+
+body.dark-mode .jmp-abstract{
+  color: rgba(229,231,235,0.90);
+}
+
+/* Deforestation WIP: single column, figure full width at bottom */
+.paper-wip{
+  display: block;
+}
+
+.wip-figure{
+  margin: 14px -16px -14px -16px;
+  border-radius: 0 0 var(--radius) var(--radius);
+  overflow: hidden;
+}
+
+/* Figure: no box, full width of the card */
 .fade-figure{
   margin: 0;
   position: relative;
-  height: 190px;
+  aspect-ratio: 16 / 5;
   overflow: hidden;
   border: none;
   border-radius: 0;
@@ -620,6 +980,27 @@ body.dark-mode a:hover{
   text-decoration-color: rgba(234, 242, 255, 0.9);
 }
 
+/* labs / coauthors: light grey instead of the accent blue, dark mode too —
+   must stay after the generic a/a:hover rules above to win the equal-specificity tie */
+body.dark-mode .about a,
+body.dark-mode .paper-meta a{
+  color: rgba(229,231,235,0.80);
+  text-decoration: none;
+}
+body.dark-mode .about a:hover,
+body.dark-mode .paper-meta a:hover{
+  color: rgba(229,231,235,0.98);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
+/* keep “presented at” links grey and unstyled, even on hover in dark mode */
+body.dark-mode .presented-list a,
+body.dark-mode .presented-list a:hover{
+  color: var(--muted);
+  text-decoration: none;
+}
+
 body.dark-mode .section-subtitle{
   color: rgba(243,244,246,0.96);
   text-shadow: 0 1px 0 rgba(0,0,0,0.35);
@@ -640,10 +1021,6 @@ body.dark-mode .previous-research:hover{
   box-shadow:
     0 22px 55px rgba(0,0,0,0.80),
     0 0 0 1px rgba(147,197,253,0.16);
-}
-
-body.dark-mode .chev{
-  border-top-color: rgba(229,231,235,0.75);
 }
 
 /* Readability for meta + venue + abstracts + descriptions */
@@ -697,7 +1074,7 @@ body.dark-mode img[src*="logo-black"]{
   .wip-left{ grid-column: 1; }
   .wip-right{ grid-column: 1; }
 
-  .fade-figure{ height: 210px; margin-top: 10px; }
+  .fade-figure{ margin-top: 10px; }
   .abstract-full{ grid-column: 1; }
 }
 
