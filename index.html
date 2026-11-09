@@ -102,6 +102,20 @@
                 </a>
                 as a Fulbright laureate.
             </p>
+
+            <!-- Upcoming talks: stays still if they fit, otherwise scrolls (see script).
+                 The aria-hidden copy of the talks makes the loop seamless. -->
+            <div class="visit-note ticker">
+                <span class="coming-up">Coming up!</span>
+                <div class="ticker-track">
+                    <div class="ticker-inner">
+                        <span><a href="https://www.lse.ac.uk/geography-and-environment/events/2027/nature-economics-workshop" target="_blank" rel="noopener"><strong>LSE Nature Economics Workshop</strong></a> · January 2027, London</span>
+                        <span><a href="https://grp.cepr.org/events/recipe-annual-conference-2027" target="_blank" rel="noopener"><strong>ReCIPE 2027</strong></a> · March 2027, Oxford</span>
+                        <span aria-hidden="true"><a href="https://www.lse.ac.uk/geography-and-environment/events/2027/nature-economics-workshop" target="_blank" rel="noopener" tabindex="-1"><strong>LSE Nature Economics Workshop</strong></a> · January 2027, London</span>
+                        <span aria-hidden="true"><a href="https://grp.cepr.org/events/recipe-annual-conference-2027" target="_blank" rel="noopener" tabindex="-1"><strong>ReCIPE 2027</strong></a> · March 2027, Oxford</span>
+                    </div>
+                </div>
+            </div>
           </div>
 
           <aside class="profile-side" aria-label="Profile">
@@ -155,6 +169,7 @@
         <div class="presented presented-outside">
         <span class="presented-label">Presented at:</span>
         <ul class="presented-list">
+          <li><a href="https://www.lse.ac.uk/geography-and-environment/events/2027/nature-economics-workshop" target="_blank" rel="noopener"><strong>Nature Economics Workshop</strong></a> (LSE, London) <span class="upcoming">(scheduled)</span></li>
           <li>Wageningen University Internal Seminar <span class="upcoming">(scheduled)</span></li>
           <li><a href="https://wcere2026.org/" target="_blank" rel="noopener">7th WCERE</a> (Nova SBE)</li>
           <li><a href="https://sites.google.com/view/27th-bioecon/home" target="_blank" rel="noopener">27th BIOECON</a> (Cambridge)</li>
@@ -169,7 +184,7 @@
           <li>Land-Use Policies &amp; Climate Change Adaptation Workshop</li>
           <li>Internal Seminar (PSAE) (&times;2)</li>
           <li>Internal Seminar (CEPS)</li>
-          <li>PhD Days (CEPS) <span class="upcoming">(scheduled)</span></li>
+          <li>PhD Days (CEPS)</li>
         </ul>
         </div>
 
@@ -272,7 +287,7 @@
         <div class="presented presented-outside">
         <span class="presented-label">Presented at:</span>
         <ul class="presented-list">
-            <li><strong>ReCIPE</strong> Annual Conference 2027 (New College, Oxford) <span class="upcoming">(scheduled)</span></li>
+            <li><a href="https://grp.cepr.org/events/recipe-annual-conference-2027" target="_blank" rel="noopener"><strong>ReCIPE</strong> Annual Conference 2027</a> (New College, Oxford) <span class="upcoming">(scheduled)</span></li>
             <li><a href="https://www.banque-france.fr/en/events/cepr-paris-symposium-2025" target="_blank" rel="noopener">CEPR Paris Symposium 2025</a> (Banque de France)</li>
             <li><a href="https://www.csae.ox.ac.uk/" target="_blank" rel="noopener">CSAE 2025</a> (Oxford)</li>
             <li><a href="https://eaere-conferences.org/" target="_blank" rel="noopener">30th EAERE</a> </li>
@@ -587,6 +602,85 @@
         const turningDark = !document.body.classList.contains("dark-mode");
         setTheme(turningDark ? "dark" : "light");
       });
+    }
+
+    // Upcoming-talks ticker: stays still when the talks fit in the box. Otherwise it
+    // scrolls on its own and stops on hover/touch so it can be slid by hand
+    // (trackpad, mouse drag, finger). Talks are listed twice, so jumping back by
+    // half the width loops seamlessly in both directions.
+    const ticker = document.querySelector(".ticker");
+    const track = ticker && ticker.querySelector(".ticker-track");
+    if (track) {
+      const SPEED = 40; // px per second
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const inner = track.querySelector(".ticker-inner");
+      let pos = 1, paused = false, last = null, resumeTimer = null, fits = false;
+
+      function layout() {
+        ticker.classList.add("static");
+        const gapAfter = parseFloat(getComputedStyle(inner).paddingRight) || 0;
+        fits = inner.scrollWidth - gapAfter <= track.clientWidth;
+        if (fits) track.scrollLeft = 0;
+        else { ticker.classList.remove("static"); track.scrollLeft = pos; }
+      }
+      layout();
+      window.addEventListener("resize", layout);
+
+      const half = () => track.scrollWidth / 2;
+      function wrap() {
+        const h = half();
+        if (pos >= h) pos -= h;
+        if (pos < 1) pos += h;
+        track.scrollLeft = pos;
+      }
+
+      function step(t) {
+        if (last !== null && !paused && !fits && !reduceMotion) {
+          pos += SPEED * (t - last) / 1000;
+          wrap();
+        }
+        last = t;
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+
+      // manual scrolling (trackpad, touch): follow it and keep looping
+      track.addEventListener("scroll", () => {
+        if (!paused || fits) return;
+        pos = track.scrollLeft;
+        if (pos >= half() || pos < 1) wrap();
+      });
+
+      track.addEventListener("mouseenter", () => { paused = true; });
+      track.addEventListener("mouseleave", () => { paused = false; });
+      track.addEventListener("touchstart", () => {
+        paused = true;
+        clearTimeout(resumeTimer);
+      }, { passive: true });
+      track.addEventListener("touchend", () => {
+        resumeTimer = setTimeout(() => { paused = false; }, 2000);
+      });
+
+      // click-and-drag with a mouse; a drag doesn't open the link under it
+      let dragX = null, dragStart = 0, dragged = false;
+      track.addEventListener("pointerdown", (e) => {
+        if (fits || e.pointerType !== "mouse") return;
+        dragX = e.clientX; dragStart = pos; dragged = false;
+      });
+      window.addEventListener("pointermove", (e) => {
+        if (dragX === null) return;
+        const dx = e.clientX - dragX;
+        if (Math.abs(dx) > 4) { dragged = true; track.classList.add("dragging"); }
+        if (dragged) { pos = dragStart - dx; wrap(); }
+      });
+      window.addEventListener("pointerup", () => {
+        dragX = null;
+        track.classList.remove("dragging");
+      });
+      track.addEventListener("click", (e) => {
+        if (dragged) { e.preventDefault(); dragged = false; }
+      }, true);
+      track.addEventListener("dragstart", (e) => e.preventDefault());
     }
   });
   </script>

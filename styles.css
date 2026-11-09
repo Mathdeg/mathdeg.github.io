@@ -156,6 +156,7 @@ body{
 /* ✅ justify intro text on desktop too */
 .about-text{
   text-align: justify;
+  min-width: 0; /* lets the ticker's long line overflow instead of widening the column */
 }
 
 .about h2{
@@ -229,6 +230,49 @@ body.dark-mode .jm-note{
   text-align: justify;  /* ✅ also justified */
   font-size: 0.95rem;
 }
+
+/* upcoming talks: scrolling ticker inside a visit-note box */
+.visit-note .coming-up{
+  flex: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+body.dark-mode .visit-note .coming-up{
+  color: #93c5fd;
+}
+.ticker{
+  background: transparent; /* page background shows through; border kept */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+.ticker-track{
+  flex: 1 1 0;
+  min-width: 0;
+  overflow-x: auto;     /* scrolled by the script, and by hand on hover/touch */
+  scrollbar-width: none;
+  cursor: grab;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.ticker-inner{
+  display: inline-flex;
+  gap: 22px;
+  padding-right: 22px; /* keeps the gap at the loop seam */
+  white-space: nowrap;
+}
+.ticker-track::-webkit-scrollbar{ display: none; }
+.ticker-track.dragging{ cursor: grabbing; user-select: none; }
+
+/* all talks fit: no scrolling, no fade, no duplicate copy */
+.ticker.static .ticker-track{
+  overflow: hidden;
+  cursor: auto;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+.ticker.static .ticker-inner > [aria-hidden="true"]{ display: none; }
 
 /* Optional: second line inside visit-note forced below, if you use .contact-line span */
 .visit-note .contact-line{
