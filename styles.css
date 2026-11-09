@@ -607,6 +607,9 @@ body.dark-mode .talks-list li{
 .wind-hint-panel .wind-popup{
   width: 420px;
 }
+.wind-popup.wind-popup-small{
+  width: 340px;
+}
 .wind-hint-panel .wind-popup.wind-popup-visible{
   opacity: 1;
   pointer-events: auto;
