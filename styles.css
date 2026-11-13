@@ -556,10 +556,20 @@ body.dark-mode .talks-list li{
   margin-bottom: 10px;
 }
 
-/* keeps its italics inside the already-italic label */
-.jmp-soon{
-  font-style: italic;
+.jmp-links{
+  margin-left: 8px;
+  font-style: normal;
 }
+
+.jmp-links a{
+  margin-right: 10px;
+  color: var(--link);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.jmp-links a:hover{ color: var(--accent); }
 
 .jmp-abstract{
   font-size: 0.95rem;
@@ -732,6 +742,9 @@ body.dark-mode .paper-jmp:hover{
 body.dark-mode .jmp-abstract{
   color: rgba(229,231,235,0.90);
 }
+
+body.dark-mode .jmp-links a{ color: #93c5fd; }
+body.dark-mode .jmp-links a:hover{ color: #e5e7eb; }
 
 /* Deforestation WIP: single column, figure full width at bottom */
 .paper-wip{
